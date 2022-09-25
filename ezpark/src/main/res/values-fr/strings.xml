@@ -1,0 +1,7 @@
+<resources>
+    <!--Akashdeep Singh n01458137 0NC-->
+    <string name="app_name">parc ez</string>
+    <string name="title_home">Maison</string>
+    <string name="title_dashboard">Tableau de bord</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

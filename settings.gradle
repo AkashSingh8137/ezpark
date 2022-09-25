@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "ezpark"
-include ':app'
+include ':ezpark'
