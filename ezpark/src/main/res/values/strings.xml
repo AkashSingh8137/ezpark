@@ -23,4 +23,11 @@
     <string name="title_information">Information</string>
     <string name="title_payment">Payment</string>
     <string name="customer_name_payment">Customer Name:</string>
+    <string name="pay_info">Your Payment Infomation</string>
+    <string name="pay_fullname">Your full name:</string>
+    <string name="pay_cardnumber">Card Number</string>
+    <string name="pay_date">Expiration Date</string>
+    <string name="cvv">CVV</string>
+    <string name="pay_button">Pay</string>
+    <string name="pay_savecarpermission">You want to save card for future use</string>
 </resources>
