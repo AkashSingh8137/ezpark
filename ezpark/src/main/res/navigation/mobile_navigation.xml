@@ -13,13 +13,13 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="ca.ezlock.it.ezpark.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_payment"
+        android:name="ca.ezlock.it.ezpark.ui.payment.PaymentFragment"
+        android:label="@string/title_payment"
+        tools:layout="@layout/fragment_payment" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_information"
         android:name="ca.ezlock.it.ezpark.ui.InformationsFragment.InformationsFragment"
         android:label="@string/title_information"
         tools:layout="@layout/fragment_informations" />
