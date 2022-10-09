@@ -7,14 +7,14 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_information"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/title_information" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/navigation_payment"
+        android:icon="@drawable/ic_baseline_payment_24"
+        android:title="@string/title_payment" />
 
     <item
         android:id="@+id/navigation_settings"
