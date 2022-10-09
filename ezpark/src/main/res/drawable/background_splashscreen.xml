@@ -3,10 +3,12 @@
 
     <item android:drawable="@color/white"/>
 
-    <item>
-    <bitmap android:gravity="center"
-        android:src="@drawable/Ezlot" />
-    </item>
 
+    <item>
+        <bitmap android:gravity="bottom"
+            android:src="@drawable/logo"
+            />
+
+    </item>
 
 </layer-list>
