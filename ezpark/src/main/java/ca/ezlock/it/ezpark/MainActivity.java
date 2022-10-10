@@ -2,18 +2,19 @@ package ca.ezlock.it.ezpark;
 // Akashdeep Singh n01458137 0NC
 
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     Button btn;
+    View layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         BottomNavigationView navView = findViewById(R.id.nav_view);
+        layout=findViewById(R.id.nav_host_fragment_activity_main);
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -50,17 +53,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean onNavigationItemSelected(@NonNull MenuItem item)
-    {
-        switch(item.getItemId())
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED)
         {
-            case R.id.navigation_payment:
-                PaymentFragment paymentFragment = new PaymentFragment();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.nav_host_fragment_activity_main, paymentFragment).commit();
-                return true;
+            Snackbar.make(layout,"Permission Granted",Snackbar.LENGTH_SHORT).show();
         }
-        return false;
+        else
+        {
+            Snackbar.make(layout,"Permission Denied",Snackbar.LENGTH_SHORT).show();
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
