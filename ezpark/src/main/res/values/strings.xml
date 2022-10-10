@@ -46,5 +46,5 @@
     <string name="settings_dark">  Dark Mode</string>
     <string name="settings_french">  French language</string>
     <string name="settings_access">  Access to photos</string>
-    <string name="home_bookbtn">Click\nTo\nBook</string>
+    <string name="home_bookbtn">Book</string>
 </resources>

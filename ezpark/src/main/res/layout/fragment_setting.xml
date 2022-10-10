@@ -38,12 +38,13 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/made"
         android:text="Settings"
         android:textColor="@color/black"
         android:textSize="50dp"
-        android:textStyle="bold"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +73,7 @@
             android:layout_height="55dp"
             android:text="@string/setting_potrait"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/made"/>
 
         <Switch
             android:id="@+id/switch2"
@@ -80,7 +81,7 @@
             android:layout_height="55dp"
             android:text="@string/settings_dark"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/made"/>
 
         <Switch
             android:id="@+id/switch3"
@@ -88,7 +89,7 @@
             android:layout_height="55dp"
             android:text="@string/settings_french"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/made"/>
 
         <Switch
             android:id="@+id/switch4"
@@ -96,7 +97,8 @@
             android:layout_height="55dp"
             android:text="@string/settings_access"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/made"
+            />
 
     </LinearLayout>
 

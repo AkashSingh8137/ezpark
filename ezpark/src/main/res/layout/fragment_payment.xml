@@ -29,7 +29,7 @@
         android:text="@string/pay_info"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:textStyle="bold"
+
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,9 +71,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="332dp"
         android:fontFamily="@font/avenue"
+        android:textColor="@color/black"
         android:text="@string/pay_fullname"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,9 +96,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="400dp"
         android:fontFamily="@font/avenue"
+        android:textColor="@color/black"
         android:text="@string/pay_cardnumber"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -119,10 +119,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="472dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/avenue"
         android:text="@string/pay_date"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -144,9 +144,9 @@
         android:layout_marginStart="216dp"
         android:layout_marginTop="472dp"
         android:fontFamily="@font/avenue"
+        android:textColor="@color/black"
         android:text="@string/cvv"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -168,6 +168,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="546dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/avenue"
         android:text="@string/pay_savecarpermission"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -178,6 +180,8 @@
         android:layout_height="55dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="610dp"
+        android:textColor="@color/black"
+        android:textSize="25dp"
         android:text="@string/pay_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

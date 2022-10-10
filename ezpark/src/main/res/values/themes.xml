@@ -13,7 +13,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targatApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
+
     </style>
+    <color name="orange">#fc9803</color>
+    <color name="darkblue">#2403fc</color>
+    <color name="red">#551C1C</color>
 <style name="SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">  <!-- prints the splash screen . -->
     <item name="android:windowBackground">@drawable/background_splashscreen</item>
     <item name="android:statusBarColor" tools:targatApi="l">?attr/colorPrimary</item>
