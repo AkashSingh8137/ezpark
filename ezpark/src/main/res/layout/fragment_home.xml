@@ -33,40 +33,17 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="100dp"
-        android:layout_height="92dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="472dp"
-        android:clickable="true"
-        android:src="@drawable/sign"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="412dp"
-        android:text="@string/home_below"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="168dp"
         android:text="Park"
         android:textSize="45dp"
         android:textStyle="bold"
@@ -77,8 +54,8 @@
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="225dp"
-        android:layout_marginTop="206dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="212dp"
         android:text="Car"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -89,20 +66,23 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="236dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="244dp"
         android:layout_marginEnd="92dp"
         android:text="Easy"
         android:textSize="45dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="225dp"
-        android:layout_marginTop="283dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="296dp"
         android:text="With"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -113,11 +93,21 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="307dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="316dp"
         android:text="EZPARK"
         android:textSize="50dp"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="105dp"
+        android:layout_height="153dp"
+        android:layout_marginStart="263dp"
+        android:layout_marginTop="432dp"
+        android:text="@string/home_bookbtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

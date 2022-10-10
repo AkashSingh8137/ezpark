@@ -33,7 +33,6 @@ public class PaymentFragment extends Fragment {
 
         binding = FragmentPaymentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        Toast.makeText(getActivity(),"Payment",Toast.LENGTH_SHORT).show();
 
         Button btn =(Button)root.findViewById(R.id.pay);
         btn.setOnClickListener(new View.OnClickListener() {

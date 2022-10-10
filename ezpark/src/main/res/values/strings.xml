@@ -2,7 +2,6 @@
     <!--Akashdeep Singh n01458137 0NC-->
     <string name="app_name">ezpark</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
@@ -43,4 +42,9 @@
     <string name="proceed_to_pay">Proceed to Pay</string>
     <string name="home_welcome">Welcome</string>
     <string name="home_below">Click on the icon below\nfor booking</string>
+    <string name="setting_potrait">  Potrait Mode</string>
+    <string name="settings_dark">  Dark Mode</string>
+    <string name="settings_french">  French language</string>
+    <string name="settings_access">  Access to photos</string>
+    <string name="home_bookbtn">Click\nTo\nBook</string>
 </resources>
