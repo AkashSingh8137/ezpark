@@ -41,4 +41,6 @@
     <string name="time_to">To</string>
     <string name="time">Stay Time</string>
     <string name="proceed_to_pay">Proceed to Pay</string>
+    <string name="home_welcome">Welcome</string>
+    <string name="home_below">Click on the icon below\nfor booking</string>
 </resources>
