@@ -30,4 +30,15 @@
     <string name="cvv">CVV</string>
     <string name="pay_button">Pay</string>
     <string name="pay_savecarpermission">You want to save card for future use</string>
+    <string name="info">Personal Information</string>
+    <string name="info_name">Full Name</string>
+    <string name="info_email">Email address</string>
+    <string name="info_phone">Phone No.</string>
+    <string name="car_plateno">Plate Number</string>
+    <string name="car_make">Make</string>
+    <string name="car_model">Model</string>
+    <string name="time_from">From</string>
+    <string name="time_to">To</string>
+    <string name="time">Stay Time</string>
+    <string name="proceed_to_pay">Proceed to Pay</string>
 </resources>
