@@ -6,7 +6,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,9 +28,12 @@ import ca.ezlock.it.ezpark.ui.payment.PaymentFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private ActivityMainBinding binding;
     Button btn;
     View layout;
+    ImageView imageView8;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +55,24 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
 
+ /*
+        imageView8 = findViewById(R.id.imageView8); // rotate the image
+        imageView8.setRotation(90);
 
-    }
+        imageView8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RotateAnimation rotateAnimation = new RotateAnimation(0,90,RotateAnimation.RELATIVE_TO_SELF,
+                        .5f,RotateAnimation.RELATIVE_TO_SELF,.5f);
+                rotateAnimation.setDuration(1);
+                imageView8.startAnimation(rotateAnimation);
+
+            }
+        }); */
+
+
+        }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
