@@ -17,7 +17,7 @@
     </style>
     <color name="orange">#fc9803</color>
     <color name="darkblue">#2403fc</color>
-    <color name="red">#551C1C</color>
+    <color name="red">#F60000</color>
 <style name="SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">  <!-- prints the splash screen . -->
     <item name="android:windowBackground">@drawable/background_splashscreen</item>
     <item name="android:statusBarColor" tools:targatApi="l">?attr/colorPrimary</item>

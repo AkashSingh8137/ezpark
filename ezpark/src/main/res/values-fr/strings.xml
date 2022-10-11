@@ -41,4 +41,7 @@
     <string name="attachment_summary_off">Ne télécharger les pièces jointes que sur demande manuelle</string>
     <string name="hello_blank_fragment">Bonjour fragment vierge</string>
     <string name="home_welcome">Bienvenue</string>
+    <string name="permission_denied">Permission refusée</string>
+    <string name="recipt_was_not_saved">Le reçu n a pas été enregistré</string>
+    <string name="go_to_confirmation_tab">Aller à l onglet Confirmation</string>
 </resources>

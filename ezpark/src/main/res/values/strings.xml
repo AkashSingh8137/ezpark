@@ -47,4 +47,7 @@
     <string name="settings_french">  French language</string>
     <string name="settings_access">  Access to photos</string>
     <string name="home_bookbtn">Book</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="recipt_was_not_saved">Recipt was not saved</string>
+    <string name="go_to_confirmation_tab">Go to Confirmation tab</string>
 </resources>

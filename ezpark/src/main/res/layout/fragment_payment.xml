@@ -3,10 +3,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/payment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.payment.PaymentFragment"
-    android:id="@+id/payment">
+    tools:context=".ui.payment.PaymentFragment">
+
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -72,8 +74,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="332dp"
         android:fontFamily="@font/avenue"
-        android:textColor="@color/black"
         android:text="@string/pay_fullname"
+        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -97,8 +99,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="400dp"
         android:fontFamily="@font/avenue"
-        android:textColor="@color/black"
         android:text="@string/pay_cardnumber"
+        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -120,9 +122,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="472dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/avenue"
         android:text="@string/pay_date"
+        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -145,8 +147,8 @@
         android:layout_marginStart="216dp"
         android:layout_marginTop="472dp"
         android:fontFamily="@font/avenue"
-        android:textColor="@color/black"
         android:text="@string/cvv"
+        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -162,6 +164,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/pay"
+        android:layout_width="337dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="610dp"
+        android:text="@string/pay_button"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -169,22 +183,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="546dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/avenue"
         android:text="@string/pay_savecarpermission"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/pay"
-        android:layout_width="337dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="610dp"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:text="@string/pay_button"
+
+
+    <FrameLayout
+        android:id="@+id/paymentdenied1"
+        android:layout_width="414dp"
+        android:layout_height="735dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
