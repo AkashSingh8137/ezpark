@@ -1,7 +1,8 @@
 # ezpark
-Smart Car parking lot app 
-# enrique robles n01302490
+Smart Car parking lot app
+
 #Akashdeep Singh n01458137
+#enrique robles n01302490
 
 Bottom Navigation tab
 1) Home Screen: It has on button which will take you to the screen where you can find the slot for booking
