@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/personal"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Personal Information"
+        app:showAsAction="always|withText"/>
+    <item android:id="@+id/car"
+        android:icon="@drawable/ic_baseline_directions_car_24"
+        android:title="Car Information"
+        app:showAsAction="always|withText"/>
+    <item android:id="@+id/card"
+        android:icon="@drawable/ic_baseline_payment_24"
+        android:title="Saved Cards"
+        app:showAsAction="always|withText"/>
+    <item android:id="@+id/help"
+        android:icon="@drawable/ic_baseline_help_24"
+        android:title="Help"
+        app:showAsAction="always|withText"/>
+
+
+
+</menu>

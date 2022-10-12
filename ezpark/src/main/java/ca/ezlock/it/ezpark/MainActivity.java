@@ -4,6 +4,8 @@ package ca.ezlock.it.ezpark;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.RotateAnimation;
@@ -91,6 +93,13 @@ public class MainActivity extends AppCompatActivity {
             fr.commit();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.topbar_menu,menu);
+        return true;
     }
 
     @Override
