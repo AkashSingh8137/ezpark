@@ -15,7 +15,7 @@
     tools:layout_editor_absoluteY="1dp"
 
 
-    app:layout_constraintBottom_toBottomOf=""
+    app:layout_constraintBottom_toBottomOf="220dp"
     >
 
 <androidx.constraintlayout.widget.ConstraintLayout
