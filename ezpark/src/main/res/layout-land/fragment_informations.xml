@@ -13,9 +13,6 @@
     android:layout_height="410dp"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="1dp"
-
-
-    app:layout_constraintBottom_toBottomOf=""
     >
 
 <androidx.constraintlayout.widget.ConstraintLayout
