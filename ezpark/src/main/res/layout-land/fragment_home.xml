@@ -9,13 +9,15 @@
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="800dp"
-        android:layout_height="700dp"
+        android:layout_width="736dp"
+        android:layout_height="463dp"
         android:src="@drawable/tophorizontal"
 
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="-167dp" />
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/text_home"
@@ -37,27 +39,27 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="96dp"
         android:fontFamily="@font/apple"
         android:text="Easy"
         android:textColor="@color/black"
-        android:textSize="45dp"
+        android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintHorizontal_bias="0.342"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="200dp"
         android:fontFamily="@font/apple"
-        android:text="Car"
-        android:textColor="@color/darkblue"
-        android:textSize="35dp"
+        android:text="Park"
+        android:textColor="@color/black"
+        android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,12 +68,12 @@
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="272dp"
         android:fontFamily="@font/apple"
         android:text="With"
         android:textColor="@color/darkblue"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,27 +82,27 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="344dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="288dp"
         android:fontFamily="@font/applebolditalic"
 
         android:text="EZPARK"
         android:textColor="@color/red"
-        android:textSize="50dp"
+        android:textSize="50sp"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="240dp"
         android:fontFamily="@font/apple"
-        android:text="Park"
-        android:textColor="@color/black"
-        android:textSize="45dp"
+        android:text="Car"
+        android:textColor="@color/darkblue"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -109,11 +111,12 @@
         android:id="@+id/button3"
         android:layout_width="166dp"
         android:layout_height="83dp"
-        android:layout_marginStart="484dp"
-        android:layout_marginTop="312dp"
+        android:layout_marginTop="248dp"
         android:text="@string/home_bookbtn"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.828"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
