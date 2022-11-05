@@ -59,22 +59,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
 
- /*
-        imageView8 = findViewById(R.id.imageView8); // rotate the image
-        imageView8.setRotation(90);
-
-        imageView8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RotateAnimation rotateAnimation = new RotateAnimation(0,90,RotateAnimation.RELATIVE_TO_SELF,
-                        .5f,RotateAnimation.RELATIVE_TO_SELF,.5f);
-                rotateAnimation.setDuration(1);
-                imageView8.startAnimation(rotateAnimation);
-
-            }
-        }); */
-
-
         }
 
 

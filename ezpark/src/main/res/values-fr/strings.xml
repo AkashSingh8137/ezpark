@@ -44,4 +44,9 @@
     <string name="permission_denied">Permission refusée</string>
     <string name="recipt_was_not_saved">Le reçu n a pas été enregistré</string>
     <string name="go_to_confirmation_tab">Aller à l onglet Confirmation</string>
+    <string name="log_in">Log in</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="dont_have_account">Dont have account...</string>
+    <string name="register_here">Register Here</string>
+    <string name="password">Password</string>
 </resources>
