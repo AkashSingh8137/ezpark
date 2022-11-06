@@ -21,5 +21,16 @@
 <style name="SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">  <!-- prints the splash screen . -->
     <item name="android:windowBackground">@drawable/background_splashscreen</item>
     <item name="android:statusBarColor" tools:targatApi="l">?attr/colorPrimary</item>
+
 </style>
+
+
+
+    <!-- Dark mode -->
+    <!-- Screen background if light modeon -->
+    <style name="SCREEN">
+    <item name="android:background">#fff</item>
+    </style>
+
+
 </resources>

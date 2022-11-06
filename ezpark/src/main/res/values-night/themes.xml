@@ -14,4 +14,10 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Dark mode --> <!-- Screen background if dark modeon -->
+    <style name="SCREEN">
+        <item name="android:background">#636363</item>
+    </style>
+
 </resources>
