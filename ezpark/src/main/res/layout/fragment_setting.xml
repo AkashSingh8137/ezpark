@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/signoutbutton"
         android:layout_width="367dp"
         android:layout_height="61dp"
         android:layout_marginBottom="156dp"

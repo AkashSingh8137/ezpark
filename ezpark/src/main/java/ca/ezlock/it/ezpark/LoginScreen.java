@@ -7,12 +7,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,11 +34,21 @@ public class LoginScreen extends AppCompatActivity {
     private EditText e1,e2;
     GoogleSignInClient mGoogleSignInClient;
     SignInButton signInButton;
+    CheckBox remember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_login_screen);
+        SharedPreferences preferences=getSharedPreferences("checkbox",MODE_PRIVATE);
+        String checkbox = preferences.getString("remember","");
+        if(checkbox.equals("true"))
+        {
+            Intent intent=new Intent(LoginScreen.this,MainActivity.class);
+            startActivity(intent);
+        }
+
+
         GoogleSignInOptions gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -63,6 +76,26 @@ public class LoginScreen extends AppCompatActivity {
                 else
                 {
                     Toast.makeText(LoginScreen.this, "Username or Password incorrect", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        remember= findViewById(R.id.rememberme);
+        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked())
+                {
+                    SharedPreferences preferences=getSharedPreferences("checkbox",MODE_PRIVATE);
+                    SharedPreferences.Editor editor=preferences.edit();
+                    editor.putString("remember","true");
+                    editor.apply();
+                }
+                else if(!compoundButton.isChecked())
+                {
+                    SharedPreferences preferences=getSharedPreferences("checkbox",MODE_PRIVATE);
+                    SharedPreferences.Editor editor=preferences.edit();
+                    editor.putString("remember","false");
+                    editor.apply();
                 }
             }
         });
