@@ -54,5 +54,12 @@
     <string name="remember_me">Remember Me</string>
     <string name="dont_have_account">Dont have account...</string>
     <string name="register_here">Register Here</string>
-    <string name="password">Password</string>
+    <string name="password">  Password</string>
+    <string name="create_new_account">  Create new Account</string>
+    <string name="verify_password">  Verify Password</string>
+    <string name="signuppassword">  Password</string>
+    <string name="signupphonenumber">  Phone Number</string>
+    <string name="signupemail">  Email Address</string>
+    <string name="signinname">  Name</string>
+    <string name="sign_up">  Sign Up</string>
 </resources>

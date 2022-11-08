@@ -30,7 +30,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 
 public class LoginScreen extends AppCompatActivity {
-    private Button btn;
+    private Button btn,register;
     private EditText e1,e2;
     GoogleSignInClient mGoogleSignInClient;
     SignInButton signInButton;
@@ -99,8 +99,22 @@ public class LoginScreen extends AppCompatActivity {
                 }
             }
         });
+        register=findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toregistrationscreen();
+            }
+        });
 
 
+
+    }
+
+    void toregistrationscreen()
+    {
+        Intent intent=new Intent(LoginScreen.this,RegistrationScreen.class);
+        startActivity(intent);
     }
 
     @Override
