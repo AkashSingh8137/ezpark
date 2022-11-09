@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import ca.ezlock.it.ezpark.LoginScreen;
 import ca.ezlock.it.ezpark.R;
 import ca.ezlock.it.ezpark.databinding.FragmentSettingBinding;
@@ -23,7 +25,7 @@ public class SettingsFragment extends Fragment {
 
     private FragmentSettingBinding binding;
     Button signoutbutton;
-
+    FirebaseAuth mAuth;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         SettingsViewModel notificationsViewModel =
@@ -33,6 +35,7 @@ public class SettingsFragment extends Fragment {
         View root = binding.getRoot();
 
         signoutbutton =(Button)root.findViewById(R.id.signoutbutton);
+        mAuth=FirebaseAuth.getInstance();
         signoutbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,8 +43,9 @@ public class SettingsFragment extends Fragment {
                 SharedPreferences.Editor editor=preferences.edit();
                 editor.putString("remember","false");
                 editor.apply();
-
+                mAuth.signOut();
                 Intent intent=new Intent(getContext().getApplicationContext(),LoginScreen.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
             }

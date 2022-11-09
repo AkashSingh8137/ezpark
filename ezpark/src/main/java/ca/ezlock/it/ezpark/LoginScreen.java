@@ -2,6 +2,7 @@ package ca.ezlock.it.ezpark;
 
 import static ca.ezlock.it.ezpark.R.layout.activity_login_screen;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,8 +27,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginScreen extends AppCompatActivity {
     private Button btn,register;
@@ -35,6 +42,8 @@ public class LoginScreen extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     SignInButton signInButton;
     CheckBox remember;
+    private FirebaseAuth mAuth;
+    private int RC_SIGN_IN=100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +58,12 @@ public class LoginScreen extends AppCompatActivity {
         }
 
 
-        GoogleSignInOptions gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
+        GoogleSignInOptions gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         mGoogleSignInClient= GoogleSignIn.getClient(this,gso);
         signInButton=findViewById(R.id.google_btn);
+        mAuth=FirebaseAuth.getInstance();
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +113,7 @@ public class LoginScreen extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 toregistrationscreen();
             }
         });
@@ -123,10 +134,9 @@ public class LoginScreen extends AppCompatActivity {
 
         GoogleSignInAccount account=GoogleSignIn.getLastSignedInAccount(this);
     }
-    void signIn()
-    {
-        Intent signInIntent=mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent,1000);
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     @Override
@@ -143,12 +153,39 @@ public class LoginScreen extends AppCompatActivity {
     public void handleSignInResult(Task<GoogleSignInAccount> completedTask)
     {
         try {
-            GoogleSignInAccount account=completedTask.getResult(ApiException.class);
+            GoogleSignInAccount account= completedTask.getResult(ApiException.class);
+            firebaseAuthWithGoogle(account);
 
         }
         catch (ApiException e)
         {
             Toast.makeText(getApplicationContext(),"Something went wrong",Toast.LENGTH_SHORT).show();
         }
+    }
+    private void firebaseAuthWithGoogle(GoogleSignInAccount account)
+    {
+        AuthCredential credential= GoogleAuthProvider.getCredential(account.getIdToken(),null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful())
+                        {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(LoginScreen.this,user.getEmail(),Toast.LENGTH_SHORT).show();
+                            updateUI(user);
+                        }
+                        else
+                        {
+                            Toast.makeText(LoginScreen.this,task.getException().toString(),Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                    }
+                });
+    }
+    private void updateUI(FirebaseUser user)
+    {
+        Intent intent=new Intent(LoginScreen.this,MainActivity.class);
+        startActivity(intent);
     }
 }
