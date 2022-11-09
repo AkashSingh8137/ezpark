@@ -49,7 +49,7 @@
     <string name="home_bookbtn">Book</string>
     <string name="permission_denied">Permission Denied</string>
     <string name="recipt_was_not_saved">Recipt was not saved</string>
-    <string name="go_to_confirmation_tab">Go to Confirmation tab</string>
+    <string name="go_to_confirmation_tab">Click here to get the confirmation</string>
     <string name="log_in">Log in</string>
     <string name="remember_me">Remember Me</string>
     <string name="dont_have_account">Dont have account...</string>

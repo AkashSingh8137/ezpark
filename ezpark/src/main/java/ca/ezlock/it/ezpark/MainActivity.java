@@ -34,6 +34,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import ca.ezlock.it.ezpark.databinding.ActivityMainBinding;
+import ca.ezlock.it.ezpark.ui.payment.PaymentFragment;
 
 public class MainActivity extends AppCompatActivity implements darkmode {
 
@@ -75,31 +76,10 @@ public class MainActivity extends AppCompatActivity implements darkmode {
             Snackbar.make(layout, "Permission Denied", Snackbar.LENGTH_SHORT).show();
             paymentdenied paymentdenied = new paymentdenied();
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-            fr.replace(R.id.paymentdenied1, paymentdenied);
+            fr.replace(R.id.payment, paymentdenied);
             fr.commit();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1000)
-        {
-            Task<GoogleSignInAccount> task= GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-
-
-        }
-    }
-    public void handleSignInResult(Task<GoogleSignInAccount> completedTask)
-    {
-        try {
-            GoogleSignInAccount account=completedTask.getResult(ApiException.class);
-
-        }
-        catch (ApiException e)
-        {
-            Toast.makeText(getApplicationContext(),"Something went wrong",Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override

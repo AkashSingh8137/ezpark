@@ -29,6 +29,7 @@ public class PaymentFragment extends Fragment {
 
     private FragmentPaymentBinding binding;
     private int STORAGE_PERMISSION_CODE=1;
+    Button paymentbtn;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,8 +40,8 @@ public class PaymentFragment extends Fragment {
         View root = binding.getRoot();
 
 
-        Button btn =(Button)root.findViewById(R.id.pay);
-        btn.setOnClickListener(new View.OnClickListener() {
+        paymentbtn =(Button)root.findViewById(R.id.pay);
+        paymentbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
@@ -70,6 +71,7 @@ public class PaymentFragment extends Fragment {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        paymentbtn.setVisibility(View.GONE);
                         ActivityCompat.requestPermissions(getActivity(),
                                 new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
                     }
