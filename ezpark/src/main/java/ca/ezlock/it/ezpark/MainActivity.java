@@ -36,7 +36,7 @@ import androidx.navigation.ui.NavigationUI;
 import ca.ezlock.it.ezpark.databinding.ActivityMainBinding;
 import ca.ezlock.it.ezpark.ui.payment.PaymentFragment;
 
-public class MainActivity extends AppCompatActivity implements darkmode {
+public class MainActivity extends AppCompatActivity {
 
 
     private ActivityMainBinding binding;
@@ -114,52 +114,5 @@ public class MainActivity extends AppCompatActivity implements darkmode {
         alertDialog.show();
 
     }
-
-    // function to chang to bark mode
-
-    Switch switcher;
-    boolean nightMODE;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
-
-    @Override
-    public void onClick(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        getSupportActionBar().hide();
-        switcher = findViewById(R.id.switch2);
-
-        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
-        nightMODE = sharedPreferences.getBoolean("night",false);
-
-        if (nightMODE){
-            switcher.setChecked(true);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-
-        switcher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                if (nightMODE){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night",false);
-                }
-                else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night",true);
-                }
-            }
-        });
-
-    }
-
-
-
-
 
 }
