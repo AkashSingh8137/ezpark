@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "162558511896",
-    "project_id": "ezpark-3cf6e",
-    "storage_bucket": "ezpark-3cf6e.appspot.com"
+    "project_number": "103330481504",
+    "firebase_url": "https://ezpark-7cf76-default-rtdb.firebaseio.com",
+    "project_id": "ezpark-7cf76",
+    "storage_bucket": "ezpark-7cf76.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:162558511896:android:ad837c88f138ae0f0b2c6d",
+        "mobilesdk_app_id": "1:103330481504:android:fa78dc516adf4187838a05",
         "android_client_info": {
           "package_name": "ca.ezlock.it.ezpark"
         }
       },
       "oauth_client": [
         {
-          "client_id": "162558511896-36vqfi70qi3tcb2vi1ujjg667qnv1rul.apps.googleusercontent.com",
+          "client_id": "103330481504-ohprcrhl99aro3pvgaghv6lji5v782dl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDruB29flox_kf9VNJgWzj96elTdKl_YhE"
+          "current_key": "AIzaSyDK1mRyjTBXCv4GItE_n7TslpYpFmjpNU8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "162558511896-36vqfi70qi3tcb2vi1ujjg667qnv1rul.apps.googleusercontent.com",
+              "client_id": "103330481504-ohprcrhl99aro3pvgaghv6lji5v782dl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
