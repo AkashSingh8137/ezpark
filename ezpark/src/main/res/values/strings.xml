@@ -62,4 +62,5 @@
     <string name="signupemail">  Email Address</string>
     <string name="signinname">  Name</string>
     <string name="sign_up">  Sign Up</string>
+    <string name="signupusername">Username</string>
 </resources>

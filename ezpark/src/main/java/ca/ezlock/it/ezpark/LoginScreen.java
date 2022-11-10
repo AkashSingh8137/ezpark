@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.car.ui.toolbar.Tab;
@@ -35,6 +37,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginScreen extends AppCompatActivity {
     private Button btn,register;
@@ -44,6 +53,7 @@ public class LoginScreen extends AppCompatActivity {
     CheckBox remember;
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN=100;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +88,9 @@ public class LoginScreen extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(e1.getText().toString().equals("admin") && e2.getText().toString().equals("admin"))
+                if(validateusername()==true && validateusername() ==true)
                 {
-                    Intent i = new Intent(LoginScreen.this, MainActivity.class);
-                    startActivity(i);
-                }
-                else
-                {
-                    Toast.makeText(LoginScreen.this, "Username or Password incorrect", Toast.LENGTH_SHORT).show();
+                    isUser();
                 }
             }
         });
@@ -187,5 +192,77 @@ public class LoginScreen extends AppCompatActivity {
     {
         Intent intent=new Intent(LoginScreen.this,MainActivity.class);
         startActivity(intent);
+    }
+    private Boolean validateusername()
+    {
+        if(e1.getText().toString().equals(""))
+        {
+            Toast.makeText(LoginScreen.this,"Please Enter Username",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+    private Boolean validatepassword()
+    {
+        if(e2.getText().toString().equals(""))
+        {
+            Toast.makeText(LoginScreen.this,"Please Enter Password",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+    private void isUser()
+    {
+
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Registrationinfo");
+        Query checkUser=reference.orderByChild("username").equalTo(e1.getText().toString());
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists())
+                {
+                    e1.setError(null);
+                    e1.setEnabled(false);
+                    String passwordfromdb=snapshot.child(e1.getText().toString()).child("pwd").getValue(String.class);
+                    if(passwordfromdb.equals(e2.getText().toString()))
+                    {
+                        e1.setError(null);
+                        e1.setEnabled(false);
+                        String namefromdb=snapshot.child(e1.getText().toString()).child("fullname").getValue(String.class);
+                        String usernamefromdb=snapshot.child(e1.getText().toString()).child("username").getValue(String.class);
+                        String emailfromdb=snapshot.child(e1.getText().toString()).child("email").getValue(String.class);
+                        String phonefromdb=snapshot.child(e1.getText().toString()).child("phone").getValue(String.class);
+                        Intent i = new Intent(LoginScreen.this, MainActivity.class);
+                        i.putExtra("fullname",namefromdb);
+                        i.putExtra("username",usernamefromdb);
+                        i.putExtra("email",emailfromdb);
+                        i.putExtra("phone",phonefromdb);
+                        startActivity(i);
+
+                    }
+                    else
+                    {
+                        Toast.makeText(LoginScreen.this,"Incorrect Password",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else
+                {
+                    Toast.makeText(LoginScreen.this,"Username not found",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

@@ -23,64 +23,54 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class RegistrationScreen extends AppCompatActivity {
-    EditText e1,e2,e3,e4,e5;
+    EditText e1, e2, e3, e4, e5,e6;
     Button create;
-    String Fullname,Email,Phone,Pwd;
+    String Fullname, Email, Phone, Pwd;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     Registrationinfo registrationinfo;
     ReadWriteUserDetails readWriteUserDetails;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_screen);
-        e1=findViewById(R.id.signupname);
-        e2=findViewById(R.id.signupemail);
-        e3=findViewById(R.id.signupnumber);
-        e4=findViewById(R.id.signuptPassword);
-        e5=findViewById(R.id.esignupverifyPassword);
+        e1 = findViewById(R.id.signupname);
+        e2 = findViewById(R.id.signupemail);
+        e3 = findViewById(R.id.signupnumber);
+        e4 = findViewById(R.id.signuptPassword);
+        e5 = findViewById(R.id.esignupverifyPassword);
+        e6=findViewById(R.id.signupusername);
 
-        Fullname=e1.getText().toString();
-        Email=e2.getText().toString();
-        Phone=e3.getText().toString();
-        Pwd=e4.getText().toString();
+        Fullname = e1.getText().toString();
+        Email = e2.getText().toString();
+        Phone = e3.getText().toString();
+        Pwd = e4.getText().toString();
 
 
-        firebaseDatabase=FirebaseDatabase.getInstance();
-        reference=firebaseDatabase.getReference("Registration info");
+        registrationinfo = new Registrationinfo();
 
-        registrationinfo=new Registrationinfo();
-
-        create=findViewById(R.id.createnewaccount);
+        create = findViewById(R.id.createnewaccount);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(e1.getText().toString().equals(""))
-                {
-                    Toast.makeText(RegistrationScreen.this,"Enter your name",Toast.LENGTH_SHORT).show();
-                }
-                else if(e2.getText().toString().equals(""))
-                {
-                    Toast.makeText(RegistrationScreen.this,"Enter your Email Address",Toast.LENGTH_SHORT).show();
-                }
-                else if(e3.getText().toString().equals(""))
-                {
+                if (e1.getText().toString().equals("")) {
+                    Toast.makeText(RegistrationScreen.this, "Enter your name", Toast.LENGTH_SHORT).show();
+                } else if (e2.getText().toString().equals("")) {
+                    Toast.makeText(RegistrationScreen.this, "Enter your Email Address", Toast.LENGTH_SHORT).show();
+                } else if (e3.getText().toString().equals("")) {
                     Toast.makeText(RegistrationScreen.this, "Enter Your Phone Number", Toast.LENGTH_SHORT).show();
-                }
-                else if(e4.getText().toString().equals(""))
-                {
+                } else if (e4.getText().toString().equals("")) {
                     Toast.makeText(RegistrationScreen.this, "Enter Your Password", Toast.LENGTH_SHORT).show();
-                }
-                else if(e5.getText().toString().equals(""))
-                {
+                } else if (e5.getText().toString().equals("")) {
                     Toast.makeText(RegistrationScreen.this, "Enter Your Password again", Toast.LENGTH_SHORT).show();
-                }
-                else if(e4.getText().toString().equals(e5.getText().toString()))
+                }else if(e6.getText().toString().equals(""))
                 {
-                    addDataToFirebase((e1.getText().toString()),(e2.getText().toString()),(e3.getText().toString()),(e4.getText().toString()));
+                    Toast.makeText(RegistrationScreen.this, "Enter Your Username", Toast.LENGTH_SHORT).show();
                 }
-                else
-                {
+                else if (e4.getText().toString().equals(e5.getText().toString())) {
+                    addDataToFirebase((e1.getText().toString()), (e2.getText().toString()), (e3.getText().toString()), (e4.getText().toString()),(e6.getText().toString()));
+                } else {
                     Toast.makeText(RegistrationScreen.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
                 }
 
@@ -88,30 +78,23 @@ public class RegistrationScreen extends AppCompatActivity {
         });
 
     }
-    private void addDataToFirebase(String fullname,String email,String phone,String pwd)
-    {
-        registrationinfo.setFullname("Akashdeep Singh");
+
+    private void addDataToFirebase(String fullname, String email, String phone, String pwd,String username) {
+        registrationinfo.setFullname(fullname);
         registrationinfo.setemail(email);
         registrationinfo.setphone(phone);
         registrationinfo.setpwd(pwd);
+        registrationinfo.setusername(username);
 
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                reference.setValue(registrationinfo);
-                Toast.makeText(RegistrationScreen.this,"Account Created",Toast.LENGTH_SHORT).show();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        reference = firebaseDatabase.getReference("Registrationinfo");
+
+        reference.child(username).setValue(registrationinfo);
+        Toast.makeText(RegistrationScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(RegistrationScreen.this,LoginScreen.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(RegistrationScreen.this,"Failed to Create new account",Toast.LENGTH_SHORT).show();
 
-            }
-        });
     }
-
 }

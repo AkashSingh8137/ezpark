@@ -17,7 +17,7 @@
         android:background="@drawable/login"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:ems="10"
-        android:hint="Username or email"
+        android:hint="Username "
         android:inputType="textPersonName"
         android:textColor="@color/blue"
         android:textColorHint="@color/blue"
@@ -36,6 +36,7 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColorHint="@color/blue"
+        android:textColor="@color/blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,19 +92,18 @@
         android:id="@+id/imageView12"
         android:layout_width="292dp"
         android:layout_height="265dp"
-        android:src="@drawable/loginlogo"
         android:layout_marginStart="47dp"
         android:layout_marginTop="69dp"
+        android:src="@drawable/loginlogo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/google_btn"
         android:layout_width="48dp"
         android:layout_height="40dp"
         android:layout_marginStart="168dp"
-        android:layout_marginTop="584dp"
+        android:layout_marginTop="576dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
