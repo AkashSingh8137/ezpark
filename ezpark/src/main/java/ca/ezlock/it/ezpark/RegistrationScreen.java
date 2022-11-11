@@ -29,7 +29,6 @@ public class RegistrationScreen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     Registrationinfo registrationinfo;
-    ReadWriteUserDetails readWriteUserDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

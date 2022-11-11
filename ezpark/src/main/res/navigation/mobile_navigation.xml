@@ -19,10 +19,10 @@
         tools:layout="@layout/fragment_payment" />
 
     <fragment
-        android:id="@+id/navigation_information"
-        android:name="ca.ezlock.it.ezpark.ui.InformationsFragment.InformationsFragment"
-        android:label="@string/title_information"
-        tools:layout="@layout/fragment_informations" />
+        android:id="@+id/navigation_profile"
+        android:name="ca.ezlock.it.ezpark.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profilefragment" />
 
     <fragment
         android:id="@+id/navigation_settings"
