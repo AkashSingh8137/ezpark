@@ -60,7 +60,7 @@
     <string name="signuppassword">  Password</string>
     <string name="signupphonenumber">  Phone Number</string>
     <string name="signupemail">  Email Address</string>
-    <string name="signinname">  Name</string>
+    <string name="signinname" translatable="false">  Name</string>
     <string name="sign_up">  Sign Up</string>
     <string name="signupusername">Username</string>
 </resources>
