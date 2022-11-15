@@ -81,10 +81,6 @@ public class PaymentFragment extends Fragment {
         paymentbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
-
                 ConfirmationFragment confirmationFragment=new ConfirmationFragment();
                 ReviewFragment reviewFragment=new ReviewFragment();
                 FragmentTransaction fr=getParentFragmentManager().beginTransaction();

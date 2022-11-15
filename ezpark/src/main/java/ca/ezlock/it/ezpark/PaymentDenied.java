@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import ca.ezlock.it.ezpark.databinding.FragmentPaymentdeniedBinding;
+import ca.ezlock.it.ezpark.ui.settings.SettingsFragment;
 
 public class PaymentDenied extends Fragment {
     private FragmentPaymentdeniedBinding binding;
@@ -26,8 +27,9 @@ public class PaymentDenied extends Fragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getContext(),MainActivity.class);
-                startActivity(intent);
+                SettingsFragment settingsFragment=new SettingsFragment();
+                FragmentTransaction fr=getParentFragmentManager().beginTransaction();
+                fr.replace(R.id.paymentdenied,settingsFragment).commit();
             }
         });
 

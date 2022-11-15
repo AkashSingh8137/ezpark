@@ -59,10 +59,9 @@ public class MainActivity extends AppCompatActivity {
             Snackbar.make(layout, "Permission Granted", Snackbar.LENGTH_SHORT).show();
         } else {
             Snackbar.make(layout, "Permission Denied", Snackbar.LENGTH_SHORT).show();
-            PaymentDenied paymentdenied = new PaymentDenied();
-            FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-            fr.replace(R.id.spot, paymentdenied);
-            fr.commit();
+            PaymentDenied paymentDenied=new PaymentDenied();
+            FragmentTransaction fr=getSupportFragmentManager().beginTransaction();
+            fr.replace(R.id.setting,paymentDenied).commit();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
