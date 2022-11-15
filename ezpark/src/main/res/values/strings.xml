@@ -44,7 +44,7 @@
     <string name="home_below">Click on the icon below\nfor booking</string>
     <string name="setting_potrait">  Potrait Mode</string>
     <string name="settings_dark">  Dark Mode</string>
-    <string name="settings_french">  French language</string>
+    <string name="settings_Location"> Location</string>
     <string name="settings_access">  Access to photos</string>
     <string name="home_bookbtn">Book</string>
     <string name="permission_denied">Permission Denied</string>
