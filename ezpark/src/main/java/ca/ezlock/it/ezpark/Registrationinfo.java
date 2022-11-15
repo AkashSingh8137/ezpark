@@ -1,7 +1,7 @@
 package ca.ezlock.it.ezpark;
 
 public class Registrationinfo {
-    private String fullname, email, phone, pwd, username,ratingname,ratingemail,ratingphone,ratingcomments;
+    private String fullname, email, phone, pwd, username,ratingname,ratingemail,ratingphone,ratingcomments,paymentname,paymentnumber,paymentexpdate,paymentcvv;
     Float ratingstar;
 
     public Registrationinfo() {
@@ -86,5 +86,35 @@ public class Registrationinfo {
     public void setRatingstar(Float ratingstar) {
         this.ratingstar = ratingstar;
     }
+    public String getPaymetname() {
+        return paymentname;
+    }
+
+    public void setPaymentname(String paymentname) {
+        this.paymentname = paymentname;
+    }
+
+    public String getPaymentnumber() {
+        return paymentnumber;
+    }
+
+    public void setPaymentnumber(String paymentnumber) {
+        this.paymentnumber = paymentnumber;
+    }
+    public String getPaymentexpdate() {
+        return paymentexpdate;
+    }
+
+    public void setPaymentexpdate(String paymentexpdate) {
+        this.paymentexpdate = paymentexpdate;
+    }
+    public String getPaymentcvv() {
+        return paymentcvv;
+    }
+
+    public void setPaymentcvv(String paymentcvv) {
+        this.paymentcvv = paymentcvv;
+    }
+
 }
 

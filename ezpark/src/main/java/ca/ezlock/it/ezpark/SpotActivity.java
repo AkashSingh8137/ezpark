@@ -19,38 +19,35 @@ import ca.ezlock.it.ezpark.ui.InformationsFragment.InformationsFragment;
 public class SpotActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     RadioButton location;
     Button button;
+    Spinner spot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spot);
 
-        Spinner spot=findViewById(R.id.spinner3);
+        spot = findViewById(R.id.spinner3);
         spot.setVisibility(View.VISIBLE);
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(SpotActivity.this,R.array.spots,android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(SpotActivity.this, R.array.spots, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spot.setAdapter(adapter);
         spot.setOnItemSelectedListener(this);
         spot.setVisibility(View.INVISIBLE);
-        location=findViewById(R.id.location);
+        location = findViewById(R.id.location);
         location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(location.isChecked())
-                {
+                if (location.isChecked()) {
                     spot.setVisibility(View.VISIBLE);
-                    Toast.makeText(SpotActivity.this,"Humber College",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SpotActivity.this, "Humber College", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        button=findViewById(R.id.continuelocation);
+        button = findViewById(R.id.continuelocation);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                button.setVisibility(View.GONE);
-                InformationsFragment informationsFragment=new InformationsFragment();
-                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.spot,informationsFragment).commit();
+                validation();
             }
         });
 
@@ -63,6 +60,18 @@ public class SpotActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    public void validation() {
+        if (!location.isChecked()) {
+            Toast.makeText(SpotActivity.this, "Please select location", Toast.LENGTH_SHORT).show();
+        } else {
+            button.setVisibility(View.GONE);
+            InformationsFragment informationsFragment = new InformationsFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.spot, informationsFragment).commit();
+        }
 
     }
 }

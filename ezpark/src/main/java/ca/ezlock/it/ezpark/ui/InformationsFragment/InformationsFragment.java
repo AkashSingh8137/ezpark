@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import ca.ezlock.it.ezpark.R;
+import ca.ezlock.it.ezpark.RegistrationScreen;
 import ca.ezlock.it.ezpark.databinding.FragmentInformationsBinding;
 import ca.ezlock.it.ezpark.ui.payment.PaymentFragment;
 
@@ -56,7 +58,7 @@ public class InformationsFragment extends Fragment {
         proceedtopay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gotopaymentscreen();
+                validation();
             }
         });
 
@@ -103,6 +105,30 @@ public class InformationsFragment extends Fragment {
             }
         });
     }
+    public void validation() {
+        if (bookname.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter your name", Toast.LENGTH_SHORT).show();
+        } else if (bookemail.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter your Email Address", Toast.LENGTH_SHORT).show();
+        } else if (bookphone.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter Your Phone Number", Toast.LENGTH_SHORT).show();
+        } else if (bookcarplate.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter Your Plate No.", Toast.LENGTH_SHORT).show();
+        } else if (bookcarmake.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter Car Make", Toast.LENGTH_SHORT).show();
+        } else if (bookcarmodel.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter Car Model", Toast.LENGTH_SHORT).show();
+        } else if (timeto.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter Time", Toast.LENGTH_SHORT).show();
+        } else if (timefrom.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter Time", Toast.LENGTH_SHORT).show();
+        } else if (bookcarmodel.getText().toString().equals("")) {
+            Toast.makeText(getContext(), "Enter Your Username", Toast.LENGTH_SHORT).show();
+        } else {
+            gotopaymentscreen();
+        }
+    }
+
     public void gotopaymentscreen()
     {
         PaymentFragment paymentFragment=new PaymentFragment();
