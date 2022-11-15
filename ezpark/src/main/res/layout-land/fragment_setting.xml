@@ -93,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:fontFamily="@font/made"
-            android:text="@string/settings_french"
+            android:text="@string/settings_Location"
             android:textSize="20dp" />
 
         <Switch
