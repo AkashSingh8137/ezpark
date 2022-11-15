@@ -9,11 +9,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -34,13 +36,14 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import ca.ezlock.it.ezpark.databinding.ActivityMainBinding;
+import ca.ezlock.it.ezpark.ui.InformationsFragment.InformationsFragment;
 import ca.ezlock.it.ezpark.ui.payment.PaymentFragment;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private ActivityMainBinding binding;
-    Button btn;
+    Button btn,book;
     View layout;
     ImageView imageView8;
 
@@ -54,24 +57,27 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         layout = findViewById(R.id.nav_host_fragment_activity_main);
 
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_payment, R.id.navigation_profile, R.id.navigation_settings)
+                R.id.navigation_home, R.id.navigation_confirmation, R.id.navigation_profile, R.id.navigation_settings)
                 .build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Snackbar.make(layout, "Permission Granted", Snackbar.LENGTH_SHORT).show();
+            ConfirmationFragment confirmationFragment= new ConfirmationFragment();
+            FragmentTransaction fr=getSupportFragmentManager().beginTransaction();
+            fr.replace(R.id.payment,confirmationFragment).commit();
+
         } else {
             Snackbar.make(layout, "Permission Denied", Snackbar.LENGTH_SHORT).show();
             paymentdenied paymentdenied = new paymentdenied();
@@ -80,13 +86,6 @@ public class MainActivity extends AppCompatActivity {
             fr.commit();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.topbar_menu, menu);
-        return true;
     }
 
     @Override
