@@ -1,5 +1,6 @@
 package ca.ezlock.it.ezpark;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,11 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import ca.ezlock.it.ezpark.databinding.FragmentPaymentBinding;
 import ca.ezlock.it.ezpark.databinding.FragmentPaymentdeniedBinding;
-import ca.ezlock.it.ezpark.databinding.FragmentSettingBinding;
-import ca.ezlock.it.ezpark.ui.payment.PaymentFragment;
-public class paymentdenied extends Fragment {
+
+public class PaymentDenied extends Fragment {
     private FragmentPaymentdeniedBinding binding;
     Button confirm;
 
@@ -27,11 +26,8 @@ public class paymentdenied extends Fragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ConfirmationFragment confirmationFragment=new ConfirmationFragment();
-                FragmentTransaction fr=getParentFragmentManager().beginTransaction();
-                confirm.setVisibility(View.GONE);
-                fr.replace(R.id.paymentdenied,confirmationFragment);
-
+                Intent intent=new Intent(getContext(),MainActivity.class);
+                startActivity(intent);
             }
         });
 

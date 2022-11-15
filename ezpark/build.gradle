@@ -48,6 +48,7 @@ dependencies {
     implementation 'com.android.car.ui:car-ui-lib:2.0.0'
     implementation 'com.google.firebase:firebase-auth:21.0.8'
     implementation 'com.google.firebase:firebase-database:20.1.0'
+    implementation 'com.google.android.play:core:1.10.3'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

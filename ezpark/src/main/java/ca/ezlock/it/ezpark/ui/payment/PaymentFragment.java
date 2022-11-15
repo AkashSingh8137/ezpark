@@ -26,6 +26,7 @@ import com.google.android.material.snackbar.Snackbar;
 import ca.ezlock.it.ezpark.ConfirmationFragment;
 import ca.ezlock.it.ezpark.MainActivity;
 import ca.ezlock.it.ezpark.R;
+import ca.ezlock.it.ezpark.ReviewFragment;
 import ca.ezlock.it.ezpark.databinding.FragmentPaymentBinding;
 
 public class PaymentFragment extends Fragment {
@@ -47,10 +48,13 @@ public class PaymentFragment extends Fragment {
         paymentbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 ConfirmationFragment confirmationFragment=new ConfirmationFragment();
+                ReviewFragment reviewFragment=new ReviewFragment();
                 FragmentTransaction fr=getParentFragmentManager().beginTransaction();
                 paymentbtn.setVisibility(View.GONE);
-                fr.replace(R.id.payment,confirmationFragment).commit();
+                fr.replace(R.id.payment,reviewFragment).commit();
             }
         });
         /*paymentbtn.setOnClickListener(new View.OnClickListener() {

@@ -56,6 +56,7 @@ public class ProfileFragment extends Fragment {
         });
 
 
+
         getdata();
         return root;
     }
@@ -96,4 +97,5 @@ public class ProfileFragment extends Fragment {
 
 
     }
+
 }

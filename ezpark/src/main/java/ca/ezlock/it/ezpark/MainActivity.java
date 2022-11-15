@@ -1,34 +1,19 @@
 package ca.ezlock.it.ezpark;
 // Akashdeep Singh n01458137 0NC
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -36,8 +21,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import ca.ezlock.it.ezpark.databinding.ActivityMainBinding;
-import ca.ezlock.it.ezpark.ui.InformationsFragment.InformationsFragment;
-import ca.ezlock.it.ezpark.ui.payment.PaymentFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,15 +57,11 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Snackbar.make(layout, "Permission Granted", Snackbar.LENGTH_SHORT).show();
-            ConfirmationFragment confirmationFragment= new ConfirmationFragment();
-            FragmentTransaction fr=getSupportFragmentManager().beginTransaction();
-            fr.replace(R.id.payment,confirmationFragment).commit();
-
         } else {
             Snackbar.make(layout, "Permission Denied", Snackbar.LENGTH_SHORT).show();
-            paymentdenied paymentdenied = new paymentdenied();
+            PaymentDenied paymentdenied = new PaymentDenied();
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-            fr.replace(R.id.payment, paymentdenied);
+            fr.replace(R.id.spot, paymentdenied);
             fr.commit();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
