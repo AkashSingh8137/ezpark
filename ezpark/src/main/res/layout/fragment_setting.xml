@@ -28,47 +28,53 @@
         android:id="@+id/imageView8"
         android:layout_width="99dp"
         android:layout_height="84dp"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="76dp"
         android:src="@drawable/gear"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.419" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/made"
         android:text="Settings"
         android:textColor="@color/black"
         android:textSize="50dp"
 
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.416" />
 
     <Button
         android:id="@+id/signoutbutton"
         android:layout_width="367dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="156dp"
         android:text="Sign out"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_setting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.308" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="364dp"
         android:layout_height="234dp"
+        android:layout_marginTop="152dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Switch
             android:id="@+id/switch1"
