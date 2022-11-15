@@ -14,17 +14,12 @@ Recipt is not saved
 4) Setting: It is for user to change settings. we have make 4 settings which user can change
 a) Potrait Mode: User can lock screen to potrait mode 
 b) Dark mode: User can change the screen to dark mode
-c)French language: User can change language to french
+c)Location: User can disable/enable permission for location
 d) Access to photos: User can make the app not to access the photos
 And there is one button to sign out from app
-
-Top-bar menu
-1) Personal Information: User's personal information is saved here and user can change it whenever he wants
-2) Car information: User's car information is saved here for user to not to type car information everytime
-3) Saved Cards: User can save cards here for future use
-4) Help : It contains information if user needs help regarding app
+p
 
 Run-time Permission:
 For run-time permission:
-Payment>Pay>Yes>Allow/Deny
+Settings/Access to photos
 
