@@ -16,9 +16,9 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/navigation_payment"
-        android:icon="@drawable/ic_baseline_payment_24"
-        android:title="@string/title_payment"
+        android:id="@+id/navigation_confirmation"
+        android:icon="@drawable/confirm"
+        android:title="Confirmation"
         app:showAsAction="ifRoom|withText"/>
 
 

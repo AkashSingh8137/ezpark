@@ -13,10 +13,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_payment"
-        android:name="ca.ezlock.it.ezpark.ui.payment.PaymentFragment"
-        android:label="@string/title_payment"
-        tools:layout="@layout/fragment_payment" />
+        android:id="@+id/navigation_confirmation"
+        android:name="ca.ezlock.it.ezpark.ConfirmationFragment"
+        android:label="Confirmation"
+        tools:layout="@layout/fragment_confirmation" />
 
     <fragment
         android:id="@+id/navigation_profile"

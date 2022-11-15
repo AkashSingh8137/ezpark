@@ -1,5 +1,6 @@
 package ca.ezlock.it.ezpark.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import ca.ezlock.it.ezpark.MainActivity;
 import ca.ezlock.it.ezpark.R;
+import ca.ezlock.it.ezpark.SpotActivity;
 import ca.ezlock.it.ezpark.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    Button book;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +34,15 @@ public class HomeFragment extends Fragment {
         final TextView textView = binding.textHome;
 
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        book=root.findViewById(R.id.book);
+        book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), SpotActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

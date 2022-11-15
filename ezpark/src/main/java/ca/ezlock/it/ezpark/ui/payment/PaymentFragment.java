@@ -17,10 +17,13 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import ca.ezlock.it.ezpark.ConfirmationFragment;
 import ca.ezlock.it.ezpark.MainActivity;
 import ca.ezlock.it.ezpark.R;
 import ca.ezlock.it.ezpark.databinding.FragmentPaymentBinding;
@@ -28,7 +31,7 @@ import ca.ezlock.it.ezpark.databinding.FragmentPaymentBinding;
 public class PaymentFragment extends Fragment {
 
     private FragmentPaymentBinding binding;
-    private int STORAGE_PERMISSION_CODE=1;
+    private int STORAGE_PERMISSION_CODE = 1;
     Button paymentbtn;
 
 
@@ -40,8 +43,17 @@ public class PaymentFragment extends Fragment {
         View root = binding.getRoot();
 
 
-        paymentbtn =(Button)root.findViewById(R.id.pay);
+        paymentbtn = (Button) root.findViewById(R.id.pay);
         paymentbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ConfirmationFragment confirmationFragment=new ConfirmationFragment();
+                FragmentTransaction fr=getParentFragmentManager().beginTransaction();
+                paymentbtn.setVisibility(View.GONE);
+                fr.replace(R.id.payment,confirmationFragment).commit();
+            }
+        });
+        /*paymentbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
@@ -95,10 +107,7 @@ public class PaymentFragment extends Fragment {
                 Toast.makeText(getActivity(), "Permission DENIED", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    }*/
+        return root;
     }
 }
