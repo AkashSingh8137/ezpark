@@ -28,9 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.regex.Pattern;
 
 public class RegistrationScreen extends AppCompatActivity {
-    EditText e1, e2, e3, e4, e5,e6;
+    EditText e1, e2, e3, e4, e5;
     Button create;
     String Fullname, Email, Phone, Pwd;
+    FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     Registrationinfo registrationinfo;
@@ -45,7 +46,7 @@ public class RegistrationScreen extends AppCompatActivity {
         e3 = findViewById(R.id.signupnumber);
         e4 = findViewById(R.id.signuptPassword);
         e5 = findViewById(R.id.esignupverifyPassword);
-        e6=findViewById(R.id.signupusername);
+        mAuth=FirebaseAuth.getInstance();
         uppercaseblank=findViewById(R.id.uppercaseblank);
         uppercasefilled=findViewById(R.id.uppercasefilled);
         charblank=findViewById(R.id.charblank);
@@ -103,12 +104,9 @@ public class RegistrationScreen extends AppCompatActivity {
                 }
                 else if (e5.getText().toString().equals("")) {
                     Toast.makeText(RegistrationScreen.this, "Enter Your Password again", Toast.LENGTH_SHORT).show();
-                }else if(e6.getText().toString().equals(""))
-                {
-                    Toast.makeText(RegistrationScreen.this, "Enter Your Username", Toast.LENGTH_SHORT).show();
                 }
                 else if (e4.getText().toString().equals(e5.getText().toString())) {
-                    addDataToFirebase((e1.getText().toString()), (e2.getText().toString()), (e3.getText().toString()), (e4.getText().toString()),(e6.getText().toString()));
+                    addDataToFirebase((e1.getText().toString()), (e2.getText().toString()), (e3.getText().toString()), (e4.getText().toString()));
                 } else {
                     Toast.makeText(RegistrationScreen.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
                 }
@@ -117,21 +115,34 @@ public class RegistrationScreen extends AppCompatActivity {
         });
 
     }
-    private void addDataToFirebase(String fullname, String email, String phone, String pwd,String username) {
+    private void addDataToFirebase(String fullname, String email, String phone, String pwd) {
         registrationinfo.setFullname(fullname);
         registrationinfo.setemail(email);
         registrationinfo.setphone(phone);
         registrationinfo.setpwd(pwd);
-        registrationinfo.setusername(username);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        reference = firebaseDatabase.getReference("Registrationinfo");
 
-        reference.child(username).setValue(registrationinfo);
-        Toast.makeText(RegistrationScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(RegistrationScreen.this,LoginScreen.class);
-                startActivity(intent);
-                finish();
+        mAuth.createUserWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful())
+                {
+                    firebaseDatabase = FirebaseDatabase.getInstance();
+                    reference = firebaseDatabase.getReference();
+
+                    reference.child(phone).setValue(registrationinfo);
+                    Toast.makeText(RegistrationScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(RegistrationScreen.this,LoginScreen.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+                else
+                {
+                    Toast.makeText(RegistrationScreen.this, "Email already Registered", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
     }

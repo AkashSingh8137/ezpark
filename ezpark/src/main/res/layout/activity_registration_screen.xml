@@ -12,8 +12,8 @@
         android:id="@+id/signup"
         android:layout_width="206dp"
         android:layout_height="70dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="140dp"
         android:text="@string/sign_up"
         android:textColor="@color/blue"
         android:textSize="40dp"
@@ -113,23 +113,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="664dp"
         android:text="@string/create_new_account"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/signupusername"
-        android:layout_width="382dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="168dp"
-        android:background="@drawable/login"
-        android:ems="10"
-        android:hint="@string/signupusername"
-        android:inputType="textPersonName"
-        android:paddingLeft="15dp"
-        android:textColor="@color/blue"
-        android:textColorHint="@color/blue"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
