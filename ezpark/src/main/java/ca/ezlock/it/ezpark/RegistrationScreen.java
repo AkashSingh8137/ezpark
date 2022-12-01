@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.regex.Pattern;
+
 public class RegistrationScreen extends AppCompatActivity {
     EditText e1, e2, e3, e4, e5,e6;
     Button create;
@@ -29,7 +34,8 @@ public class RegistrationScreen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     Registrationinfo registrationinfo;
-
+    ImageView uppercaseblank,uppercasefilled,charblank,charfilled,specialblank,specialfilled,numberblank,numberfilled;
+    int uppercaseno=0,chno=0,specialno=0,numberno=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +46,40 @@ public class RegistrationScreen extends AppCompatActivity {
         e4 = findViewById(R.id.signuptPassword);
         e5 = findViewById(R.id.esignupverifyPassword);
         e6=findViewById(R.id.signupusername);
+        uppercaseblank=findViewById(R.id.uppercaseblank);
+        uppercasefilled=findViewById(R.id.uppercasefilled);
+        charblank=findViewById(R.id.charblank);
+        charfilled=findViewById(R.id.charfilled);
+        specialblank=findViewById(R.id.specialblank);
+        specialfilled=findViewById(R.id.specialfilled);
+        numberblank=findViewById(R.id.numberblank);
+        numberfilled=findViewById(R.id.numberfilled);
+
+        uppercasefilled.setVisibility(View.INVISIBLE);
+        charfilled.setVisibility(View.INVISIBLE);
+        specialfilled.setVisibility(View.INVISIBLE);
+        numberfilled.setVisibility(View.INVISIBLE);
+
 
         Fullname = e1.getText().toString();
         Email = e2.getText().toString();
         Phone = e3.getText().toString();
         Pwd = e4.getText().toString();
+        e4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                passwordvalidate();
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
 
         registrationinfo = new Registrationinfo();
@@ -61,7 +96,12 @@ public class RegistrationScreen extends AppCompatActivity {
                     Toast.makeText(RegistrationScreen.this, "Enter Your Phone Number", Toast.LENGTH_SHORT).show();
                 } else if (e4.getText().toString().equals("")) {
                     Toast.makeText(RegistrationScreen.this, "Enter Your Password", Toast.LENGTH_SHORT).show();
-                } else if (e5.getText().toString().equals("")) {
+                }
+                else if(uppercaseno==0 || specialno==0|| chno==0|| numberno==0)
+                {
+                    Toast.makeText(RegistrationScreen.this, "CHeck password", Toast.LENGTH_SHORT).show();
+                }
+                else if (e5.getText().toString().equals("")) {
                     Toast.makeText(RegistrationScreen.this, "Enter Your Password again", Toast.LENGTH_SHORT).show();
                 }else if(e6.getText().toString().equals(""))
                 {
@@ -77,7 +117,6 @@ public class RegistrationScreen extends AppCompatActivity {
         });
 
     }
-
     private void addDataToFirebase(String fullname, String email, String phone, String pwd,String username) {
         registrationinfo.setFullname(fullname);
         registrationinfo.setemail(email);
@@ -95,5 +134,31 @@ public class RegistrationScreen extends AppCompatActivity {
                 finish();
 
 
+    }
+    public void passwordvalidate()
+    {
+        Pattern AZ=Pattern.compile("[A-Z]");
+        Pattern special=Pattern.compile("[$&+,:;=?@#|'<>.-^*()%!]");
+        Pattern number=Pattern.compile("[0-9]");
+        if(AZ.matcher(e4.getText().toString()).find())
+        {
+            uppercasefilled.setVisibility(View.VISIBLE);
+            uppercaseno=1;
+        }
+        if(special.matcher(e4.getText().toString()).find())
+        {
+            specialfilled.setVisibility(View.VISIBLE);
+            specialno=1;
+        }
+        if(e4.getText().toString().length()>=6)
+        {
+            charfilled.setVisibility(View.VISIBLE);
+            chno=1;
+        }
+        if(number.matcher(e4.getText().toString()).find())
+        {
+            numberfilled.setVisibility(View.VISIBLE);
+            numberno=1;
+        }
     }
 }
