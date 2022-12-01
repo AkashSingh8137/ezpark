@@ -36,6 +36,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Locale;
+
 import ca.ezlock.it.ezpark.ui.profile.ProfileFragment;
 
 public class LoginScreen extends AppCompatActivity {
@@ -47,6 +49,7 @@ public class LoginScreen extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN=100;
     public String usernamefromdb;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,46 +217,18 @@ public class LoginScreen extends AppCompatActivity {
     }
     private void isUser()
     {
-
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Registrationinfo");
-        Query checkUser=reference.orderByChild("username").equalTo(e1.getText().toString());
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        mAuth.signInWithEmailAndPassword(e1.getText().toString(),e2.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists())
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful())
                 {
-                    e1.setError(null);
-                    e1.setEnabled(false);
-                    String passwordfromdb=snapshot.child(e1.getText().toString()).child("pwd").getValue(String.class);
-                    if(passwordfromdb.equals(e2.getText().toString()))
-                    {
-                        e1.setError(null);
-                        e1.setEnabled(false);
-                        String namefromdb=snapshot.child(e1.getText().toString()).child("fullname").getValue(String.class);
-                        usernamefromdb=snapshot.child(e1.getText().toString()).child("username").getValue(String.class);
-                        String emailfromdb=snapshot.child(e1.getText().toString()).child("email").getValue(String.class);
-                        String phonefromdb=snapshot.child(e1.getText().toString()).child("phone").getValue(String.class);
-                        ProfileFragment profileFragment=new ProfileFragment();
-
-
-                        Intent i = new Intent(LoginScreen.this, MainActivity.class);
-                        startActivity(i);
-
-                    }
-                    else
-                    {
-                        Toast.makeText(LoginScreen.this,"Incorrect Password",Toast.LENGTH_SHORT).show();
-                    }
+                    Intent intent=new Intent(LoginScreen.this,MainActivity.class);
+                    startActivity(intent);
                 }
                 else
                 {
-                    Toast.makeText(LoginScreen.this,"Username not found",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginScreen.this,"Login Failed,Check Username or password",Toast.LENGTH_SHORT).show();
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

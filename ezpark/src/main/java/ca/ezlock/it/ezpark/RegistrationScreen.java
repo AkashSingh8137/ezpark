@@ -35,6 +35,7 @@ public class RegistrationScreen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     Registrationinfo registrationinfo;
+    String myuserid;
     ImageView uppercaseblank,uppercasefilled,charblank,charfilled,specialblank,specialfilled,numberblank,numberfilled;
     int uppercaseno=0,chno=0,specialno=0,numberno=0;
     @Override
@@ -128,9 +129,9 @@ public class RegistrationScreen extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
                     firebaseDatabase = FirebaseDatabase.getInstance();
-                    reference = firebaseDatabase.getReference();
-
-                    reference.child(phone).setValue(registrationinfo);
+                    reference = firebaseDatabase.getReference("Users");
+                    myuserid=mAuth.getUid();
+                    reference.child(myuserid).setValue(registrationinfo);
                     Toast.makeText(RegistrationScreen.this, "Account Created", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(RegistrationScreen.this,LoginScreen.class);
                     startActivity(intent);
