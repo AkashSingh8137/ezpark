@@ -91,20 +91,25 @@ public class RegistrationScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (e1.getText().toString().equals("")) {
-                    Toast.makeText(RegistrationScreen.this, "Enter your name", Toast.LENGTH_SHORT).show();
+                    e1.setError("Enter Name");
                 } else if (e2.getText().toString().equals("")) {
-                    Toast.makeText(RegistrationScreen.this, "Enter your Email Address", Toast.LENGTH_SHORT).show();
+                    e2.setError("Enter your Email Address");
                 } else if (e3.getText().toString().equals("")) {
-                    Toast.makeText(RegistrationScreen.this, "Enter Your Phone Number", Toast.LENGTH_SHORT).show();
-                } else if (e4.getText().toString().equals("")) {
-                    Toast.makeText(RegistrationScreen.this, "Enter Your Password", Toast.LENGTH_SHORT).show();
+                    e3.setError("Enter Your Phone Number");
+                }
+                else if(e3.getText().toString().length()>10)
+                {
+                    e3.setError("Phone number should be 10 digits");
+                }
+                else if (e4.getText().toString().equals("")) {
+                    e4.setError("Enter Your Password");
                 }
                 else if(uppercaseno==0 || specialno==0|| chno==0|| numberno==0)
                 {
-                    Toast.makeText(RegistrationScreen.this, "CHeck password", Toast.LENGTH_SHORT).show();
+                    e4.setError("Check password");
                 }
                 else if (e5.getText().toString().equals("")) {
-                    Toast.makeText(RegistrationScreen.this, "Enter Your Password again", Toast.LENGTH_SHORT).show();
+                    e5.setError("Enter Your Password again");
                 }
                 else if (e4.getText().toString().equals(e5.getText().toString())) {
                     addDataToFirebase((e1.getText().toString()), (e2.getText().toString()), (e3.getText().toString()), (e4.getText().toString()));

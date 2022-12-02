@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,22 +31,25 @@ public class ProfileFragment extends Fragment {
     TextView profileusername;
     Button update;
     DatabaseReference reference;
+    FirebaseAuth mAuth;
+    String myuserid;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding= FragmentProfilefragmentBinding.inflate(inflater,container,false);
         View root=binding.getRoot();
-
+        mAuth=FirebaseAuth.getInstance();
+        myuserid=mAuth.getUid();
 
 
         profilename=root.findViewById(R.id.profilename);
-        profileusername=root.findViewById(R.id.profileusername);
         profileemail=root.findViewById(R.id.profileemail);
         profilephone=root.findViewById(R.id.profilePhone);
         carplate=root.findViewById(R.id.profileplatenumber);
         carmake=root.findViewById(R.id.profilecarmake);
         carmodel=root.findViewById(R.id.profilecarmodel);
+
 
         update=root.findViewById(R.id.updateprofile);
         update.setOnClickListener(new View.OnClickListener() {
@@ -62,20 +66,23 @@ public class ProfileFragment extends Fragment {
     }
     public void getdata()
     {
-        reference= FirebaseDatabase.getInstance().getReference("Registrationinfo");
+        reference= FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String namefromdb=snapshot.child("imakash").child("fullname").getValue(String.class);
-                String usernamefromdb=snapshot.child("imakash").child("username").getValue(String.class);
-                String emailfromdb=snapshot.child("imakash").child("email").getValue(String.class);
-                String phonefromdb=snapshot.child("imakash").child("phone").getValue(String.class);
+                String namefromdb=snapshot.child(myuserid).child("fullname").getValue(String.class);
+                String emailfromdb=snapshot.child(myuserid).child("email").getValue(String.class);
+                String phonefromdb=snapshot.child(myuserid).child("phone").getValue(String.class);
+                String platefromdb=snapshot.child(myuserid).child("plate number").getValue(String.class);
+                String makefromdb=snapshot.child(myuserid).child("make").getValue(String.class);
+                String modelfromdb=snapshot.child(myuserid).child("model").getValue(String.class);
 
                 profilename.setText(namefromdb);
-                profileusername.setText(usernamefromdb);
                 profileemail.setText(emailfromdb);
                 profilephone.setText(phonefromdb);
-
+                carplate.setText(platefromdb);
+                carmake.setText(makefromdb);
+                carmodel.setText(modelfromdb);
             }
 
             @Override
@@ -86,12 +93,12 @@ public class ProfileFragment extends Fragment {
     }
     public void updatedata()
     {
-        reference.child("imakash").child("fullname").setValue(profilename.getText().toString());
-        reference.child("imakash").child("email").setValue(profileemail.getText().toString());
-        reference.child("imakash").child("phone").setValue(profilephone.getText().toString());
-        reference.child("imakash").child("vehicle").child("plate number").setValue(carplate.getText().toString());
-        reference.child("imakash").child("vehicle").child("make").setValue(carmake.getText().toString());
-        reference.child("imakash").child("vehicle").child("model").setValue(carmodel.getText().toString());
+        reference.child(myuserid).child("fullname").setValue(profilename.getText().toString());
+        reference.child(myuserid).child("email").setValue(profileemail.getText().toString());
+        reference.child(myuserid).child("phone").setValue(profilephone.getText().toString());
+        reference.child(myuserid).child("plate number").setValue(carplate.getText().toString());
+        reference.child(myuserid).child("make").setValue(carmake.getText().toString());
+        reference.child(myuserid).child("model").setValue(carmodel.getText().toString());
 
         Toast.makeText(getContext(),"Profile Updated",Toast.LENGTH_SHORT).show();
 

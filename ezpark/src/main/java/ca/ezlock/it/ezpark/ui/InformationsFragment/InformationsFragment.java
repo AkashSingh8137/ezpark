@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,8 @@ public class InformationsFragment extends Fragment {
     EditText bookname,bookemail,bookphone,bookcarplate,bookcarmake,bookcarmodel,timefrom,timeto;
     DatabaseReference reference;
     Button proceedtopay;
+    FirebaseAuth mAuth;
+    String myuserid;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
