@@ -13,11 +13,21 @@
         android:id="@+id/textView37"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="352dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="72dp"
         android:text="No Confirmations"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="412dp"
+        android:layout_height="514dp"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="217dp"
+        tools:ignore="MissingConstraints" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
