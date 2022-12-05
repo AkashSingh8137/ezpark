@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +43,8 @@ public class PaymentFragment extends Fragment {
     CheckBox savetouse,usesaved;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
+    FirebaseAuth mAuth;
+    String myuserid;
     Registrationinfo registrationinfo;
 
 
@@ -52,6 +55,8 @@ public class PaymentFragment extends Fragment {
         binding = FragmentPaymentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        mAuth=FirebaseAuth.getInstance();
+        myuserid=mAuth.getUid();
         paymentname=root.findViewById(R.id.paymentname);
         paymentnumber=root.findViewById(R.id.paymentcardnumber);
         paymentexpdate=root.findViewById(R.id.paymentexpirydate);
@@ -98,9 +103,9 @@ public class PaymentFragment extends Fragment {
         registrationinfo.setPaymentcvv(paymentcvv);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        reference = firebaseDatabase.getReference("Registrationinfo");
+        reference = firebaseDatabase.getReference("Users");
 
-        reference.child("imakash").child("Carddetails").setValue(registrationinfo);
+        reference.child(myuserid).child("Carddetails").setValue(registrationinfo);
         Toast.makeText(getContext(), "Payment Card Saved", Toast.LENGTH_SHORT).show();
     }
     public void readData()
@@ -109,10 +114,10 @@ public class PaymentFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String namefromdb=snapshot.child("imakash").child("Carddetails").child("paymetname").getValue(String.class);
-                String numberfromdb=snapshot.child("imakash").child("Carddetails").child("paymentnumber").getValue(String.class);
-                String expdatefromdb=snapshot.child("imakash").child("Carddetails").child("paymentexpdate").getValue(String.class);
-                String cvvfromdb=snapshot.child("imakash").child("Carddetails").child("paymentcvv").getValue(String.class);
+                String namefromdb=snapshot.child(myuserid).child("Carddetails").child("paymetname").getValue(String.class);
+                String numberfromdb=snapshot.child(myuserid).child("Carddetails").child("paymentnumber").getValue(String.class);
+                String expdatefromdb=snapshot.child(myuserid).child("Carddetails").child("paymentexpdate").getValue(String.class);
+                String cvvfromdb=snapshot.child(myuserid).child("Carddetails").child("paymentcvv").getValue(String.class);
 
                 paymentname.setText(namefromdb);
                 paymentnumber.setText(numberfromdb);
