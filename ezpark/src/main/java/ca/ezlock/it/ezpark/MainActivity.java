@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ActivityMainBinding binding;
-    Button btn,book, map;
+    Button btn,book;
     View layout;
     ImageView imageView8;
 

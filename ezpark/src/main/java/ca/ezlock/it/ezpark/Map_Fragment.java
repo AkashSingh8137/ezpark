@@ -24,23 +24,13 @@ public class Map_Fragment extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceStates) {
         super.onCreate(savedInstanceStates);
 
-        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.maps);
+        SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         supportMapFragment.getMapAsync(this);
 
     }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(@NonNull LatLng latLng) {
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(latLng);
-                markerOptions.title("humber");
-                googleMap.clear();
-                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                googleMap.addMarker(markerOptions);
-            }
-        });
+
     }
 }
