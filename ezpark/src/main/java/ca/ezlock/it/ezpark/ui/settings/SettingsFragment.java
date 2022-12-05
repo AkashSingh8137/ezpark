@@ -22,6 +22,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import ca.ezlock.it.ezpark.LoginScreen;
 import ca.ezlock.it.ezpark.R;
@@ -33,7 +38,10 @@ public class SettingsFragment extends Fragment {
     Button signoutbutton;
     private int STORAGE_PERMISSION_CODE = 1;
     FirebaseAuth mAuth;
-    Switch accesstophotos;
+    String myuserid;
+    Switch accesstophotos,potrait,darkmode,location;
+    DatabaseReference reference;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         SettingsViewModel notificationsViewModel =
@@ -42,7 +50,15 @@ public class SettingsFragment extends Fragment {
         binding = FragmentSettingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
+        mAuth=FirebaseAuth.getInstance();
+        myuserid=mAuth.getUid();
         accesstophotos=root.findViewById(R.id.accesstophotos);
+        potrait=root.findViewById(R.id.potrait);
+        darkmode=root.findViewById(R.id.darkmode);
+        location=root.findViewById(R.id.location);
+        reference= FirebaseDatabase.getInstance().getReference("Users");
+        getdatafromfirebase();
         accesstophotos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -67,6 +83,60 @@ public class SettingsFragment extends Fragment {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
+            }
+        });
+
+        potrait.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(potrait.isChecked())
+                {
+                    reference.child(myuserid).child("Settings").child("Potrait").setValue(true);
+                }
+                else
+                {
+                    reference.child(myuserid).child("Settings").child("Potrait").setValue(false);
+                }
+            }
+        });
+        darkmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(darkmode.isChecked())
+                {
+                    reference.child(myuserid).child("Settings").child("darkmode").setValue(true);
+                }
+                else
+                {
+                    reference.child(myuserid).child("Settings").child("darkmode").setValue(false);
+                }
+            }
+        });
+        location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(location.isChecked())
+                {
+                    reference.child(myuserid).child("Settings").child("location").setValue(true);
+
+                }
+                else
+                {
+                    reference.child(myuserid).child("Settings").child("location").setValue(false);
+                }
+            }
+        });
+        accesstophotos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(accesstophotos.isChecked())
+                {
+                    reference.child(myuserid).child("Settings").child("access").setValue(true);
+                }
+                else
+                {
+                    reference.child(myuserid).child("Settings").child("access").setValue(false);
+                }
             }
         });
 
@@ -96,4 +166,27 @@ public class SettingsFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+    public void getdatafromfirebase() {
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Boolean checkp = snapshot.child(myuserid).child("Settings").child("Potrait").getValue(Boolean.class);
+                Boolean checka = snapshot.child(myuserid).child("Settings").child("access").getValue(Boolean.class);
+                Boolean checkd = snapshot.child(myuserid).child("Settings").child("darkmode").getValue(Boolean.class);
+                Boolean checkl = snapshot.child(myuserid).child("Settings").child("location").getValue(Boolean.class);
+
+                potrait.setChecked(checkp);
+                darkmode.setChecked(checkd);
+                location.setChecked(checkl);
+                accesstophotos.setChecked(checka);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
 }

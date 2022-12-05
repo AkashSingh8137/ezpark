@@ -78,7 +78,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/potrait"
             android:layout_width="361dp"
             android:layout_height="55dp"
             android:fontFamily="@font/made"
@@ -86,7 +86,7 @@
             android:textSize="20dp" />
 
         <Switch
-            android:id="@+id/switch2"
+            android:id="@+id/darkmode"
             android:layout_width="362dp"
             android:layout_height="55dp"
             android:fontFamily="@font/made"
@@ -94,7 +94,7 @@
             android:textSize="20dp" />
 
         <Switch
-            android:id="@+id/switch3"
+            android:id="@+id/location"
             android:layout_width="360dp"
             android:layout_height="55dp"
             android:fontFamily="@font/made"
