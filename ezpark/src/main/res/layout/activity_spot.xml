@@ -48,8 +48,8 @@
         android:id="@+id/continuelocation"
         android:layout_width="371dp"
         android:layout_height="48dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="316dp"
         android:text="Continue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -82,7 +82,10 @@ public class SpotActivity extends AppCompatActivity implements AdapterView.OnIte
             String spotlocation=spot.getSelectedItem().toString();
             storetofirebase(spotlocation);
             button.setVisibility(View.GONE);
+            Bundle bundle=new Bundle();
+            bundle.putString("spotlocation",spotlocation);
             InformationsFragment informationsFragment = new InformationsFragment();
+            informationsFragment.setArguments(bundle);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.spot, informationsFragment).commit();
         }

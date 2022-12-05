@@ -129,9 +129,9 @@ public class ProfileFragment extends Fragment {
         reference.child(myuserid).child("fullname").setValue(profilename.getText().toString());
         reference.child(myuserid).child("email").setValue(profileemail.getText().toString());
         reference.child(myuserid).child("phone").setValue(profilephone.getText().toString());
-        reference.child(myuserid).child("plate number").setValue(carplate.getText().toString());
-        reference.child(myuserid).child("make").setValue(carmake.getText().toString());
-        reference.child(myuserid).child("model").setValue(carmodel.getText().toString());
+        reference.child(myuserid).child("Vehicles").child("plate number").setValue(carplate.getText().toString());
+        reference.child(myuserid).child("Vehicles").child("make").setValue(carmake.getText().toString());
+        reference.child(myuserid).child("Vehicles").child("model").setValue(carmodel.getText().toString());
 
         Toast.makeText(getContext(),"Profile Updated",Toast.LENGTH_SHORT).show();
 

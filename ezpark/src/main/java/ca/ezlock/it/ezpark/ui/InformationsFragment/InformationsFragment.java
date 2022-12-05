@@ -25,6 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import ca.ezlock.it.ezpark.R;
 import ca.ezlock.it.ezpark.RegistrationScreen;
+import ca.ezlock.it.ezpark.Registrationinfo;
+import ca.ezlock.it.ezpark.SpotActivity;
 import ca.ezlock.it.ezpark.databinding.FragmentInformationsBinding;
 import ca.ezlock.it.ezpark.ui.payment.PaymentFragment;
 
@@ -35,10 +37,12 @@ public class InformationsFragment extends Fragment {
 
     CheckBox saveprofile;
     EditText bookname,bookemail,bookphone,bookcarplate,bookcarmake,bookcarmodel,timefrom,timeto;
-    DatabaseReference reference;
+    DatabaseReference reference,reference1;
     Button proceedtopay;
     FirebaseAuth mAuth;
     String myuserid;
+    Registrationinfo registrationinfo;
+    String spotlocation;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +52,9 @@ public class InformationsFragment extends Fragment {
         binding = FragmentInformationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        mAuth=FirebaseAuth.getInstance();
+        myuserid=mAuth.getUid();
+        spotlocation=getArguments().getString("spotlocation");
         bookname=root.findViewById(R.id.bookname);
         bookemail=root.findViewById(R.id.bookemail);
         bookphone=root.findViewById(R.id.bookphone);
@@ -57,6 +64,7 @@ public class InformationsFragment extends Fragment {
         timefrom=root.findViewById(R.id.timefrom);
         timeto=root.findViewById(R.id.timeto);
         proceedtopay=root.findViewById(R.id.proceedtopay);
+        registrationinfo=new Registrationinfo();
 
         proceedtopay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,16 +88,16 @@ public class InformationsFragment extends Fragment {
     }
     public void writedata()
     {
-        reference= FirebaseDatabase.getInstance().getReference("Registrationinfo");
+        reference= FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String namefromdb=snapshot.child("imakash").child("fullname").getValue(String.class);
-                String emailfromdb=snapshot.child("imakash").child("email").getValue(String.class);
-                String phonefromdb=snapshot.child("imakash").child("phone").getValue(String.class);
-                String carplatefromdb=snapshot.child("imakash").child("vehicle").child("plate number").getValue(String.class);
-                String carmakefromdb=snapshot.child("imakash").child("vehicle").child("make").getValue(String.class);
-                String carmodelfromdb=snapshot.child("imakash").child("vehicle").child("model").getValue(String.class);
+                String namefromdb=snapshot.child(myuserid).child("fullname").getValue(String.class);
+                String emailfromdb=snapshot.child(myuserid).child("email").getValue(String.class);
+                String phonefromdb=snapshot.child(myuserid).child("phone").getValue(String.class);
+                String carplatefromdb=snapshot.child(myuserid).child("Vehicles").child("plate number").getValue(String.class);
+                String carmakefromdb=snapshot.child(myuserid).child("Vehicles").child("make").getValue(String.class);
+                String carmodelfromdb=snapshot.child(myuserid).child("Vehicles").child("model").getValue(String.class);
 
 
                 bookname.setText(namefromdb);
@@ -128,6 +136,7 @@ public class InformationsFragment extends Fragment {
         } else if (bookcarmodel.getText().toString().equals("")) {
             Toast.makeText(getContext(), "Enter Your Username", Toast.LENGTH_SHORT).show();
         } else {
+            adddatatofirebase(bookname.getText().toString(),bookemail.getText().toString(),bookphone.getText().toString(),bookcarplate.getText().toString(),bookcarmake.getText().toString(),bookcarmodel.getText().toString(),timeto.getText().toString(),timefrom.getText().toString());
             gotopaymentscreen();
         }
     }
@@ -144,5 +153,18 @@ public class InformationsFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+    public void adddatatofirebase(String bookname,String bookmail,String bookphone,String bookcarplate,String bookcarmake,String bookcarmodel,String timeto,String timefrom)
+    {
+
+        reference1= FirebaseDatabase.getInstance().getReference("Spots");
+        reference1.child(spotlocation).child("fullname").setValue(bookname);
+        reference1.child(spotlocation).child("email").setValue(bookmail);
+        reference1.child(spotlocation).child("phone").setValue(bookphone);
+        reference1.child(spotlocation).child("plate number").setValue(bookcarplate);
+        reference1.child(spotlocation).child("make").setValue(bookcarmake);
+        reference1.child(spotlocation).child("model").setValue(bookcarmodel);
+        reference1.child(spotlocation).child("Timeto").setValue(timeto);
+        reference1.child(spotlocation).child("Timefrom").setValue(timefrom);
     }
 }
