@@ -21,13 +21,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/maps"
         android:layout_width="412dp"
         android:layout_height="514dp"
         tools:layout_editor_absoluteX="-1dp"
         tools:layout_editor_absoluteY="217dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

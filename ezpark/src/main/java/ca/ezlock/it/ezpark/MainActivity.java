@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.gms.maps.SupportMapFragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -37,16 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        //map button
-        map = (Button) findViewById(R.id.map);
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openmaps();
-            }
-        });
-//
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -64,17 +55,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
 
-        //map functione
-        Fragment fragment = new Map_Fragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,fragment).commit();
-
     }
-    //map
-    public void openmaps(){
-        Intent intent = new Intent(MainActivity.this,ConfirmationFragment.class);
-        startActivity(intent);
 
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
