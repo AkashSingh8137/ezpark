@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import ca.ezlock.it.ezpark.ConfirmationFragment;
 import ca.ezlock.it.ezpark.R;
 import ca.ezlock.it.ezpark.RegistrationScreen;
 import ca.ezlock.it.ezpark.Registrationinfo;
@@ -143,7 +144,10 @@ public class InformationsFragment extends Fragment {
 
     public void gotopaymentscreen()
     {
+        Bundle bundle=new Bundle();
+        bundle.putString("spotlocation",spotlocation);
         PaymentFragment paymentFragment=new PaymentFragment();
+        paymentFragment.setArguments(bundle);
         FragmentTransaction fragmentTransaction=getParentFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.spot,paymentFragment).commit();
         proceedtopay.setVisibility(View.GONE);
@@ -158,6 +162,7 @@ public class InformationsFragment extends Fragment {
     {
 
         reference1= FirebaseDatabase.getInstance().getReference("Spots");
+        reference.child(myuserid).child("Spot").setValue(spotlocation);
         reference1.child(spotlocation).child("fullname").setValue(bookname);
         reference1.child(spotlocation).child("email").setValue(bookmail);
         reference1.child(spotlocation).child("phone").setValue(bookphone);

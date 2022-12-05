@@ -85,7 +85,9 @@ public class SpotActivity extends AppCompatActivity implements AdapterView.OnIte
             Bundle bundle=new Bundle();
             bundle.putString("spotlocation",spotlocation);
             InformationsFragment informationsFragment = new InformationsFragment();
+            ConfirmationFragment confirmationFragment=new ConfirmationFragment();
             informationsFragment.setArguments(bundle);
+            confirmationFragment.setArguments(bundle);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.spot, informationsFragment).commit();
         }
@@ -94,6 +96,6 @@ public class SpotActivity extends AppCompatActivity implements AdapterView.OnIte
     public void storetofirebase(String spotlocation)
     {
 
-        reference.child(spotlocation).setValue(myuserid);
+        reference.setValue(spotlocation);
     }
 }
