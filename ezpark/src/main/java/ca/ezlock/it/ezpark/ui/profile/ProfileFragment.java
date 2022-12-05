@@ -1,37 +1,24 @@
 package ca.ezlock.it.ezpark.ui.profile;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageException;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import ca.ezlock.it.ezpark.LoginScreen;
 import ca.ezlock.it.ezpark.R;
@@ -46,12 +33,6 @@ public class ProfileFragment extends Fragment {
     DatabaseReference reference;
     FirebaseAuth mAuth;
     String myuserid;
-    ImageView profile;
-    ImageButton profilebtn;
-    StorageReference storageReference;
-    String profilefirebasename;
-    StorageReference fileref;
-    Uri imageuri;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,11 +41,7 @@ public class ProfileFragment extends Fragment {
         View root=binding.getRoot();
         mAuth=FirebaseAuth.getInstance();
         myuserid=mAuth.getUid();
-        storageReference= FirebaseStorage.getInstance().getReference();
-        profilefirebasename=myuserid+"profile.jpg";
-        fileref=storageReference.child(profilefirebasename);
-        //fileref.getFile(getimageuri);
-        //profile.setImageURI(getimageuri);
+
 
         profilename=root.findViewById(R.id.profilename);
         profileemail=root.findViewById(R.id.profileemail);
@@ -72,8 +49,6 @@ public class ProfileFragment extends Fragment {
         carplate=root.findViewById(R.id.profileplatenumber);
         carmake=root.findViewById(R.id.profilecarmake);
         carmodel=root.findViewById(R.id.profilecarmodel);
-        profile=root.findViewById(R.id.profilepic);
-        profilebtn=root.findViewById(R.id.profilechange);
 
 
         update=root.findViewById(R.id.updateprofile);
@@ -85,15 +60,7 @@ public class ProfileFragment extends Fragment {
         });
 
 
-        profilebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent openGellery=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGellery,1000);
 
-            }
-
-        });
         getdata();
         return root;
     }
@@ -138,32 +105,4 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1000)
-        {
-            if(resultCode== Activity.RESULT_OK)
-            {
-                imageuri=data.getData();
-                profile.setImageURI(imageuri);
-                uploadimagetofirebase(imageuri);
-            }
-        }
-    }
-    private  void uploadimagetofirebase(Uri imageuri)
-    {
-        fileref.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(getContext(),"Profile pic changed",Toast.LENGTH_SHORT).show();
-            }
-
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(),"Profile pic not changed",Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
