@@ -22,7 +22,7 @@ public class DarkMode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_setting);
+
 
         getSupportActionBar().hide();
         switcher = findViewById(R.id.switch2);
@@ -38,7 +38,6 @@ public class DarkMode extends AppCompatActivity {
         switcher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 if (nightMODE) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);

@@ -63,6 +63,7 @@
     <string name="signinname" translatable="false">  Name</string>
     <string name="sign_up">  Sign Up</string>
     <string name="signupusername">Username</string>
+    <string name="map">Map</string>
     <string-array name="spots">
         <item>1</item>
         <item>2</item>
