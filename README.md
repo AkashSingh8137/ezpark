@@ -3,6 +3,7 @@ Smart Car parking lot app
 
 #Akashdeep Singh n01458137
 #enrique robles n01302490
+#prashanna kc n01467778
 
 Bottom Navigation tab
 1) Home Screen: It has on button which will take you to the screen where you can find the slot for booking
