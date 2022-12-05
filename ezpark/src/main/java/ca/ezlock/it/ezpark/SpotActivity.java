@@ -14,18 +14,30 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import ca.ezlock.it.ezpark.ui.InformationsFragment.InformationsFragment;
 
 public class SpotActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     RadioButton location;
     Button button;
     Spinner spot;
+    FirebaseAuth mAuth;
+    String myuserid;
+    DatabaseReference reference;
+    Registrationinfo registrationinfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spot);
 
+        registrationinfo=new Registrationinfo();
+        mAuth= FirebaseAuth.getInstance();
+        myuserid=mAuth.getUid();
+        reference= FirebaseDatabase.getInstance().getReference("Spots");
         spot = findViewById(R.id.spinner3);
         spot.setVisibility(View.VISIBLE);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(SpotActivity.this, R.array.spots, android.R.layout.simple_spinner_item);
@@ -67,11 +79,18 @@ public class SpotActivity extends AppCompatActivity implements AdapterView.OnIte
         if (!location.isChecked()) {
             Toast.makeText(SpotActivity.this, "Please select location", Toast.LENGTH_SHORT).show();
         } else {
+            String spotlocation=spot.getSelectedItem().toString();
+            storetofirebase(spotlocation);
             button.setVisibility(View.GONE);
             InformationsFragment informationsFragment = new InformationsFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.spot, informationsFragment).commit();
         }
 
+    }
+    public void storetofirebase(String spotlocation)
+    {
+
+        reference.child(spotlocation).setValue(myuserid);
     }
 }

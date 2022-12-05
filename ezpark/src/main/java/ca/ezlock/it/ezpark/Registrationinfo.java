@@ -1,7 +1,7 @@
 package ca.ezlock.it.ezpark;
 
 public class Registrationinfo {
-    private String fullname, email, phone, pwd, username,ratingname,ratingemail,ratingphone,ratingcomments,paymentname,paymentnumber,paymentexpdate,paymentcvv;
+    private String fullname, email, phone, pwd, username,ratingname,ratingemail,ratingphone,ratingcomments,paymentname,paymentnumber,paymentexpdate,paymentcvv,spotlocation;
     Float ratingstar;
 
     public Registrationinfo() {
@@ -114,6 +114,14 @@ public class Registrationinfo {
 
     public void setPaymentcvv(String paymentcvv) {
         this.paymentcvv = paymentcvv;
+    }
+
+    public String getspotlocation() {
+        return spotlocation;
+    }
+
+    public void setspotlocation(String spotlocation) {
+        this.spotlocation = spotlocation;
     }
 
 }
