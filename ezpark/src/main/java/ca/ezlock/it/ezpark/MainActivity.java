@@ -122,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
                 callIntent.setData(Uri.parse("tel:6476150058"));
                 startActivity(callIntent);
                 return true;
+            case R.id.Help:
+                Intent intent=new Intent(MainActivity.this,HelpActivity.class);
+                startActivity(intent);
+                return true;
+
 
         }
         return super.onOptionsItemSelected(item);

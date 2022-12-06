@@ -9,6 +9,11 @@
         app:showAsAction="ifRoom"
         />
 
-    
+    <item
+        android:title="Help"
+        android:id="@+id/Help"
+        android:icon="@drawable/help"
+        app:showAsAction="ifRoom"
+        />
 
 </menu>
