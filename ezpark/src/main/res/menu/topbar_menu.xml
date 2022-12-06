@@ -3,6 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:title="Payment"
+        android:id="@+id/addpayment"
+        android:icon="@drawable/payment"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:title="Save"
+        android:id="@+id/save"
+        android:icon="@drawable/star"
+        app:showAsAction="ifRoom"
+        />
+
+
+    <item
         android:title="Phone"
         android:id="@+id/Contact"
         android:icon="@drawable/phone"
@@ -13,13 +28,6 @@
         android:title="Help"
         android:id="@+id/Help"
         android:icon="@drawable/help"
-        app:showAsAction="ifRoom"
-        />
-
-    <item
-        android:title="Payment"
-        android:id="@+id/addpayment"
-        android:icon="@drawable/payment"
         app:showAsAction="ifRoom"
         />
 

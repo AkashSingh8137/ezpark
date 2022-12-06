@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ActivityMainBinding binding;
-    Button btn,book;
+    Button map,book;
     View layout;
     ImageView imageView8;
 
@@ -46,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         BottomNavigationView navView = findViewById(R.id.nav_view);
         layout = findViewById(R.id.nav_host_fragment_activity_main);
+
+        book=findViewById(R.id.book);
+        map=findViewById(R.id.map);
+
+        book.setVisibility(View.VISIBLE);
+        map.setVisibility(View.VISIBLE);
 
 
         // Passing each menu ID as a set of Ids because each
@@ -130,6 +136,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent1=new Intent(MainActivity.this,AddPayment.class);
                 startActivity(intent1);
                 return true;
+            case R.id.save:
+
+                ReviewFragment reviewFragment=new ReviewFragment();
+                FragmentTransaction fr=getSupportFragmentManager().beginTransaction();
+                book.setVisibility(View.INVISIBLE);
+                map.setVisibility(View.INVISIBLE);
+                fr.replace(R.id.home,reviewFragment).commit();
+
 
 
         }
