@@ -98,7 +98,7 @@
             android:layout_width="360dp"
             android:layout_height="55dp"
             android:fontFamily="@font/made"
-            android:text="@string/settings_Location"
+            android:text="@string/Notification"
             android:textSize="20dp" />
 
         <Switch
