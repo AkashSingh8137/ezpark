@@ -47,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         layout = findViewById(R.id.nav_host_fragment_activity_main);
 
-        book=findViewById(R.id.book);
+
         map=findViewById(R.id.map);
 
-        book.setVisibility(View.VISIBLE);
+
         map.setVisibility(View.VISIBLE);
 
 
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
                 ReviewFragment reviewFragment=new ReviewFragment();
                 FragmentTransaction fr=getSupportFragmentManager().beginTransaction();
-                book.setVisibility(View.INVISIBLE);
+
                 map.setVisibility(View.INVISIBLE);
                 fr.replace(R.id.home,reviewFragment).commit();
 

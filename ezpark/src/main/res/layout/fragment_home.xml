@@ -47,9 +47,9 @@
         android:layout_marginTop="168dp"
         android:fontFamily="@font/apple"
         android:text="Park"
+        android:textColor="@color/black"
         android:textSize="45dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,9 +61,9 @@
         android:layout_marginTop="212dp"
         android:fontFamily="@font/apple"
         android:text="Car"
+        android:textColor="@color/darkblue"
         android:textSize="35dp"
         android:textStyle="bold"
-        android:textColor="@color/darkblue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,14 +71,14 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/apple"
         android:layout_marginStart="235dp"
         android:layout_marginTop="244dp"
         android:layout_marginEnd="92dp"
+        android:fontFamily="@font/apple"
         android:text="Easy"
+        android:textColor="@color/black"
         android:textSize="45dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,8 +89,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="235dp"
-        android:fontFamily="@font/apple"
         android:layout_marginTop="296dp"
+        android:fontFamily="@font/apple"
         android:text="With"
         android:textColor="@color/darkblue"
         android:textSize="25dp"
@@ -104,38 +104,42 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="235dp"
         android:layout_marginTop="316dp"
-        android:textColor="@color/red"
+        android:fontFamily="@font/applebolditalic"
 
         android:text="EZPARK"
-        android:fontFamily="@font/applebolditalic"
+        android:textColor="@color/red"
         android:textSize="50dp"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/book"
-        android:layout_width="166dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="236dp"
-        android:layout_marginTop="424dp"
-        android:textStyle="bold"
-        android:textSize="25dp"
-        android:text="@string/home_bookbtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:layout_marginBottom="128dp"
         android:text="@string/map"
         app:layout_constraintBottom_toTopOf="@+id/text_home"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.848"
+
+        app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/book"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="336dp"
+        android:layout_marginTop="596dp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxImageSize="40dp"
+        app:rippleColor="@color/black" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
