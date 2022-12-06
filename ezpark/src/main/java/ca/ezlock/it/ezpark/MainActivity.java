@@ -4,7 +4,11 @@ package ca.ezlock.it.ezpark;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -97,4 +101,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.topbar_menu,menu);
+
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+
+        switch (item.getItemId())
+        {
+            case R.id.Contact:
+
+                Intent callIntent=new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:6476150058"));
+                startActivity(callIntent);
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
