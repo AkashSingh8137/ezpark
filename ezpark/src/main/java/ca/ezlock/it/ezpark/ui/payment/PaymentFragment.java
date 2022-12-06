@@ -33,6 +33,7 @@ import ca.ezlock.it.ezpark.RegistrationScreen;
 import ca.ezlock.it.ezpark.Registrationinfo;
 import ca.ezlock.it.ezpark.ReviewFragment;
 import ca.ezlock.it.ezpark.databinding.FragmentPaymentBinding;
+import ca.ezlock.it.ezpark.ui.InformationsFragment.InformationsFragment;
 
 public class PaymentFragment extends Fragment {
 
@@ -46,6 +47,7 @@ public class PaymentFragment extends Fragment {
     FirebaseAuth mAuth;
     String myuserid;
     Registrationinfo registrationinfo;
+    String spotlocation;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -55,6 +57,7 @@ public class PaymentFragment extends Fragment {
         binding = FragmentPaymentBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        spotlocation=getArguments().getString("spotlocation");
         mAuth=FirebaseAuth.getInstance();
         myuserid=mAuth.getUid();
         paymentname=root.findViewById(R.id.paymentname);
@@ -86,7 +89,10 @@ public class PaymentFragment extends Fragment {
         paymentbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle=new Bundle();
+                bundle.putString("spotlocation",spotlocation);
                 ConfirmationFragment confirmationFragment=new ConfirmationFragment();
+                confirmationFragment.setArguments(bundle);
                 ReviewFragment reviewFragment=new ReviewFragment();
                 FragmentTransaction fr=getParentFragmentManager().beginTransaction();
                 paymentbtn.setVisibility(View.GONE);
@@ -110,7 +116,7 @@ public class PaymentFragment extends Fragment {
     }
     public void readData()
     {
-        reference= FirebaseDatabase.getInstance().getReference("Registrationinfo");
+        reference= FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
