@@ -16,4 +16,11 @@
         app:showAsAction="ifRoom"
         />
 
+    <item
+        android:title="Payment"
+        android:id="@+id/addpayment"
+        android:icon="@drawable/payment"
+        app:showAsAction="ifRoom"
+        />
+
 </menu>

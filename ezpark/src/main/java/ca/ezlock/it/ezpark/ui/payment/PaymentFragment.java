@@ -68,15 +68,6 @@ public class PaymentFragment extends Fragment {
         usesaved=root.findViewById(R.id.usesaved);
         registrationinfo=new Registrationinfo();
 
-        savetouse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(savetouse.isChecked())
-                {
-                    writeData(paymentname.getText().toString(),paymentnumber.getText().toString(),paymentexpdate.getText().toString(),paymentcvv.getText().toString());
-                }
-            }
-        });
         usesaved.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -100,19 +91,6 @@ public class PaymentFragment extends Fragment {
             }
         });
         return root;
-    }
-    public void writeData(String paymentname, String paymentnumber, String paymentexpdate, String paymentcvv)
-    {
-        registrationinfo.setPaymentname(paymentname);
-        registrationinfo.setPaymentnumber(paymentnumber);
-        registrationinfo.setPaymentexpdate(paymentexpdate);
-        registrationinfo.setPaymentcvv(paymentcvv);
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        reference = firebaseDatabase.getReference("Users");
-
-        reference.child(myuserid).child("Carddetails").setValue(registrationinfo);
-        Toast.makeText(getContext(), "Payment Card Saved", Toast.LENGTH_SHORT).show();
     }
     public void readData()
     {
