@@ -15,7 +15,7 @@
         android:layout_height="104dp"
         android:layout_marginStart="280dp"
         android:layout_marginTop="52dp"
-        android:src="@drawable/identification"
+        android:src="@drawable/identificationnew"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,7 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="220dp"
         android:layout_marginTop="260dp"
-        android:src="@drawable/shelby"
+        android:src="@drawable/shelbynew"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

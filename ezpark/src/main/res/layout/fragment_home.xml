@@ -29,9 +29,7 @@
         android:id="@+id/imageView7"
         android:layout_width="998dp"
         android:layout_height="802dp"
-        android:src="@drawable/top"
-
-
+        android:src="@drawable/topnew"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.519"
@@ -132,7 +130,7 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="336dp"
+        android:layout_marginStart="312dp"
         android:layout_marginTop="596dp"
         android:clickable="true"
         android:src="@drawable/ic_baseline_add_24"

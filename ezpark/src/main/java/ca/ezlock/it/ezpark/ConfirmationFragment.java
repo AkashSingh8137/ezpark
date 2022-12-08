@@ -61,35 +61,39 @@ public class ConfirmationFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 spotlocation=snapshot.child(myuserid).child("Spot").getValue(String.class);
-                 reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String dbname=snapshot.child(spotlocation).child("fullname").getValue(String.class);
-                String dbemail=snapshot.child(spotlocation).child("email").getValue(String.class);
-                String dbphone=snapshot.child(spotlocation).child("phone").getValue(String.class);
-                String dbplate=snapshot.child(spotlocation).child("plate number").getValue(String.class);
-                String dbmake=snapshot.child(spotlocation).child("make").getValue(String.class);
-                String dbmodel=snapshot.child(spotlocation).child("model").getValue(String.class);
-                String dbtimeto=snapshot.child(spotlocation).child("Timeto").getValue(String.class);
-                String dbtimefrom=snapshot.child(spotlocation).child("Timefrom").getValue(String.class);
+                if(spotlocation=="") {
+                }
+                else {
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String dbname = snapshot.child(spotlocation).child("fullname").getValue(String.class);
+                            String dbemail = snapshot.child(spotlocation).child("email").getValue(String.class);
+                            String dbphone = snapshot.child(spotlocation).child("phone").getValue(String.class);
+                            String dbplate = snapshot.child(spotlocation).child("plate number").getValue(String.class);
+                            String dbmake = snapshot.child(spotlocation).child("make").getValue(String.class);
+                            String dbmodel = snapshot.child(spotlocation).child("model").getValue(String.class);
+                            String dbtimeto = snapshot.child(spotlocation).child("Timeto").getValue(String.class);
+                            String dbtimefrom = snapshot.child(spotlocation).child("Timefrom").getValue(String.class);
 
-                parkspot.setText(spotlocation);
-                parkname.setText(dbname);
-                parkemail.setText(dbemail);
-                parkphone.setText(dbphone);
-                parkphone.setText(dbphone);
-                parkplate.setText(dbplate);
-                parkmake.setText(dbmake);
-                parkmodel.setText(dbmodel);
-                parkfrom.setText(dbtimefrom);
-                parkto.setText(dbtimeto);
-            }
+                            parkspot.setText(spotlocation);
+                            parkname.setText(dbname);
+                            parkemail.setText(dbemail);
+                            parkphone.setText(dbphone);
+                            parkphone.setText(dbphone);
+                            parkplate.setText(dbplate);
+                            parkmake.setText(dbmake);
+                            parkmodel.setText(dbmodel);
+                            parkfrom.setText(dbtimefrom);
+                            parkto.setText(dbtimeto);
+                        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                        }
+                    });
+                }
 
             }
 

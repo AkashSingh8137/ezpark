@@ -14,11 +14,12 @@
         android:id="@+id/imageView"
         android:layout_width="375dp"
         android:layout_height="330dp"
-        android:layout_marginBottom="424dp"
+        android:layout_marginBottom="412dp"
         android:src="@drawable/pay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -175,18 +176,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <CheckBox
-        android:id="@+id/savetouse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="560dp"
-        android:fontFamily="@font/avenue"
-        android:text="@string/pay_savecarpermission"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/usesaved"

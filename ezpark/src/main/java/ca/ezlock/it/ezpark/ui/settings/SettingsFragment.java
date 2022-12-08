@@ -58,7 +58,9 @@ public class SettingsFragment extends Fragment {
         darkmode=root.findViewById(R.id.darkmode);
         location=root.findViewById(R.id.location);
         reference= FirebaseDatabase.getInstance().getReference("Users");
+        //basicdatatofirebase();
         getdatafromfirebase();
+
         accesstophotos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -187,6 +189,13 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+    }
+    public void basicdatatofirebase()
+    {
+        reference.child(myuserid).child("Settings").child("Potrait").setValue(false);
+        reference.child(myuserid).child("Settings").child("darkmode").setValue(false);
+        reference.child(myuserid).child("Settings").child("location").setValue(false);
+        reference.child(myuserid).child("Settings").child("access").setValue(false);
     }
 
 }

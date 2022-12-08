@@ -64,7 +64,6 @@ public class PaymentFragment extends Fragment {
         paymentnumber=root.findViewById(R.id.paymentcardnumber);
         paymentexpdate=root.findViewById(R.id.paymentexpirydate);
         paymentcvv=root.findViewById(R.id.paymentcvv);
-        savetouse=root.findViewById(R.id.savetouse);
         usesaved=root.findViewById(R.id.usesaved);
         registrationinfo=new Registrationinfo();
 

@@ -52,6 +52,7 @@ public class ProfileFragment extends Fragment {
     String profilefirebasename;
     StorageReference fileref;
     Uri imageuri;
+    Boolean checka;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,8 +64,6 @@ public class ProfileFragment extends Fragment {
         storageReference= FirebaseStorage.getInstance().getReference();
         profilefirebasename=myuserid+"profile.jpg";
         fileref=storageReference.child(profilefirebasename);
-        //fileref.getFile(getimageuri);
-        //profile.setImageURI(getimageuri);
 
         profilename=root.findViewById(R.id.profilename);
         profileemail=root.findViewById(R.id.profileemail);
@@ -74,6 +73,8 @@ public class ProfileFragment extends Fragment {
         carmodel=root.findViewById(R.id.profilecarmodel);
         profile=root.findViewById(R.id.profilepic);
         profilebtn=root.findViewById(R.id.profilechange);
+
+        reference= FirebaseDatabase.getInstance().getReference("Users");
 
 
         update=root.findViewById(R.id.updateprofile);
@@ -88,8 +89,25 @@ public class ProfileFragment extends Fragment {
         profilebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent openGellery=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGellery,1000);
+                reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        checka = reference.child(myuserid).child("Settings").child("access").getValue(Boolean.class);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                if(checka==true) {
+                    Intent openGellery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(openGellery, 1000);
+                }
+                else
+                {
+                    Toast.makeText(getContext(),"Please allow access to photos in settings",Toast.LENGTH_SHORT).show();
+                }
 
             }
 
@@ -99,7 +117,7 @@ public class ProfileFragment extends Fragment {
     }
     public void getdata()
     {
-        reference= FirebaseDatabase.getInstance().getReference("Users");
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
