@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -28,6 +31,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import ca.ezlock.it.ezpark.databinding.ActivityMainBinding;
+import ca.ezlock.it.ezpark.ui.settings.SettingsViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     Button map,book;
     View layout;
     ImageView imageView8;
+    Button goback;
+    FirebaseAuth mAuth;
+    DatabaseReference storageReference;
+    String myuserid;
 
 
     @Override
@@ -49,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         map=findViewById(R.id.map);
+        mAuth= FirebaseAuth.getInstance();
+        myuserid=mAuth.getUid();
+        storageReference= FirebaseDatabase.getInstance().getReference();
 
 
         map.setVisibility(View.VISIBLE);
 
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_confirmation, R.id.navigation_profile, R.id.navigation_settings)
                 .build();
@@ -63,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        goback=findViewById(R.id.confirm);
 
 
     }
@@ -72,11 +82,14 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Snackbar.make(layout, "Permission Granted", Snackbar.LENGTH_SHORT).show();
+            storageReference.child(myuserid).child("Settings").child("access").setValue(true);
         } else {
             Snackbar.make(layout, "Permission Denied", Snackbar.LENGTH_SHORT).show();
+            storageReference.child(myuserid).child("Settings").child("access").setValue(false);
             PaymentDenied paymentDenied=new PaymentDenied();
             FragmentTransaction fr=getSupportFragmentManager().beginTransaction();
             fr.replace(R.id.setting,paymentDenied).commit();
+
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }

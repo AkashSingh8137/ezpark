@@ -92,7 +92,15 @@ public class ProfileFragment extends Fragment {
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        checka = reference.child(myuserid).child("Settings").child("access").getValue(Boolean.class);
+                        checka = snapshot.child(myuserid).child("Settings").child("access").getValue(Boolean.class);
+                        if(checka==true) {
+                            Intent openGellery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            startActivityForResult(openGellery, 1000);
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(),"Please allow access to photos in settings",Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
@@ -100,14 +108,6 @@ public class ProfileFragment extends Fragment {
 
                     }
                 });
-                if(checka==true) {
-                    Intent openGellery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(openGellery, 1000);
-                }
-                else
-                {
-                    Toast.makeText(getContext(),"Please allow access to photos in settings",Toast.LENGTH_SHORT).show();
-                }
 
             }
 

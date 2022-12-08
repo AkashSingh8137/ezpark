@@ -58,15 +58,14 @@ public class SettingsFragment extends Fragment {
         darkmode=root.findViewById(R.id.darkmode);
         location=root.findViewById(R.id.location);
         reference= FirebaseDatabase.getInstance().getReference("Users");
-        //basicdatatofirebase();
-        getdatafromfirebase();
 
         accesstophotos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(accesstophotos.isChecked())
                 {
-                    permission();
+                    Toast.makeText(getContext(),"Permission Required",Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
         });
@@ -87,6 +86,7 @@ public class SettingsFragment extends Fragment {
 
             }
         });
+        getdatafromfirebase();
 
         potrait.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -133,7 +133,8 @@ public class SettingsFragment extends Fragment {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(accesstophotos.isChecked())
                 {
-                    reference.child(myuserid).child("Settings").child("access").setValue(true);
+                    permission();
+
                 }
                 else
                 {
@@ -150,7 +151,7 @@ public class SettingsFragment extends Fragment {
     {
         signoutbutton.setVisibility(View.GONE);
         ActivityCompat.requestPermissions(getActivity(),
-                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -159,6 +160,7 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getActivity(), "Permission GRANTED", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), "Permission DENIED", Toast.LENGTH_SHORT).show();
+                reference.child(myuserid).child("Settings").child("location").setValue(false);
             }
         }
     }

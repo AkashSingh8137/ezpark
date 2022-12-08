@@ -23,8 +23,8 @@
         android:id="@+id/mainscreen"
         android:layout_width="386dp"
         android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="640dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="584dp"
         android:text="Main Screen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,11 +32,13 @@
     <TextView
         android:id="@+id/textView46"
         android:layout_width="379dp"
-        android:textColor="@color/blue"
-        android:textSize="20dp"
         android:layout_height="522dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="104dp"
         android:text="For Booking: \nClick on the plus icon and then select the location and the parking spot.Press Continue then, Fill your personal detailsor you can also use saved information and then after filling the time , press continue.Fill your card details. You can also choose saved card if you have one.Then there will be confirmation screen and you can also see the confirmation in confirmation tab.
         \n \n\nIf you need any other help. You can contact us by choosing contact from the menu. "
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="104dp" />
+        android:textColor="@color/blue"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

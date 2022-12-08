@@ -29,16 +29,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.Locale;
-
-import ca.ezlock.it.ezpark.ui.profile.ProfileFragment;
 
 public class LoginScreen extends AppCompatActivity {
     private Button btn,register;
@@ -49,12 +41,14 @@ public class LoginScreen extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN=100;
     public String usernamefromdb;
+    DatabaseReference database;
     String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_login_screen);
+        database=FirebaseDatabase.getInstance().getReference("Users");
         SharedPreferences preferences=getSharedPreferences("checkbox",MODE_PRIVATE);
         String checkbox = preferences.getString("remember","");
         if(checkbox.equals("true"))
@@ -138,6 +132,7 @@ public class LoginScreen extends AppCompatActivity {
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+
     }
 
     @Override
@@ -146,8 +141,9 @@ public class LoginScreen extends AppCompatActivity {
         if(requestCode==1000)
         {
             Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
+            Intent intent=new Intent(LoginScreen.this,MainActivity.class);
+            startActivity(intent);
             handleSignInResult(task);
-
 
         }
     }
@@ -173,6 +169,7 @@ public class LoginScreen extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             FirebaseUser user = mAuth.getCurrentUser();
+                            database.setValue(user.getEmail());
                             Toast.makeText(LoginScreen.this,user.getEmail(),Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         }
@@ -222,6 +219,7 @@ public class LoginScreen extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
+
                     Intent intent=new Intent(LoginScreen.this,MainActivity.class);
                     startActivity(intent);
                 }

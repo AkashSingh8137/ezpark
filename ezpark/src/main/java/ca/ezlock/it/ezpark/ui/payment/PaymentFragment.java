@@ -101,6 +101,10 @@ public class PaymentFragment extends Fragment {
                 String numberfromdb=snapshot.child(myuserid).child("Carddetails").child("paymentnumber").getValue(String.class);
                 String expdatefromdb=snapshot.child(myuserid).child("Carddetails").child("paymentexpdate").getValue(String.class);
                 String cvvfromdb=snapshot.child(myuserid).child("Carddetails").child("paymentcvv").getValue(String.class);
+                if(namefromdb=="")
+                {
+                    Toast.makeText(getContext(),"You have no saved Cards",Toast.LENGTH_SHORT).show();
+                }
 
                 paymentname.setText(namefromdb);
                 paymentnumber.setText(numberfromdb);
