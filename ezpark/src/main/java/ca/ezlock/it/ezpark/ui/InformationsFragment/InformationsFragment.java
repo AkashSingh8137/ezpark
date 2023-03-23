@@ -1,5 +1,6 @@
 package ca.ezlock.it.ezpark.ui.InformationsFragment;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +26,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 import ca.ezlock.it.ezpark.ConfirmationFragment;
+import ca.ezlock.it.ezpark.MainActivity;
 import ca.ezlock.it.ezpark.R;
 import ca.ezlock.it.ezpark.RegistrationScreen;
 import ca.ezlock.it.ezpark.Registrationinfo;
@@ -44,6 +50,9 @@ public class InformationsFragment extends Fragment {
     String myuserid;
     Registrationinfo registrationinfo;
     String spotlocation;
+    TimePickerDialog timePickerDialog;
+    int to,from;
+    String pr;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -66,6 +75,9 @@ public class InformationsFragment extends Fragment {
         timeto=root.findViewById(R.id.timeto);
         proceedtopay=root.findViewById(R.id.proceedtopay);
         registrationinfo=new Registrationinfo();
+        timefrom.setFocusableInTouchMode(false);
+        timeto.setFocusableInTouchMode(false);
+
 
         proceedtopay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +96,21 @@ public class InformationsFragment extends Fragment {
                 }
             }
         });
+
+        timefrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Timefrom();
+            }
+        });
+        timeto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeto();
+                price();
+            }
+        });
+
 
         return root;
     }
@@ -171,5 +198,50 @@ public class InformationsFragment extends Fragment {
         reference1.child(spotlocation).child("model").setValue(bookcarmodel);
         reference1.child(spotlocation).child("Timeto").setValue(timeto);
         reference1.child(spotlocation).child("Timefrom").setValue(timefrom);
+        reference1.child(spotlocation).child("fees").setValue(pr);
+    }
+    public void Timefrom()
+    {
+        final Calendar cldr=Calendar.getInstance();
+        int hour= cldr.get(Calendar.HOUR_OF_DAY);
+        int min= cldr.get(Calendar.MINUTE);
+        timePickerDialog=new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDayfrom, int minute) {
+                timefrom.setText(hourOfDayfrom+":"+minute);
+                from=hourOfDayfrom;
+            }
+        },hour,min,true);
+        timePickerDialog.show();
+    }
+    public void timeto()
+    {
+        final Calendar cldr=Calendar.getInstance();
+        int hour= cldr.get(Calendar.HOUR_OF_DAY);
+        int min= cldr.get(Calendar.MINUTE);
+        timePickerDialog=new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDayto, int minute) {
+                timeto.setText(hourOfDayto+":"+minute);
+                to=hourOfDayto;
+            }
+        },hour,min,true);
+        timePickerDialog.show();
+    }
+    public void price()
+    {
+        int time=to-from;
+        if(time <= 2)
+        {
+            pr="$6";
+        }
+        else if(time > 2 && time <=6)
+        {
+            pr="$9";
+        }
+        else {
+            pr="$15";
+        }
+
     }
 }

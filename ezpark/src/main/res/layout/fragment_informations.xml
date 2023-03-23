@@ -229,7 +229,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="540dp"
-
+        android:focusableInTouchMode="true"
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toStartOf="parent"
@@ -253,6 +253,7 @@
         android:layout_height="51dp"
         android:layout_marginStart="220dp"
         android:layout_marginTop="536dp"
+        android:focusableInTouchMode="true"
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toStartOf="parent"
@@ -281,6 +282,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
