@@ -165,7 +165,7 @@
         android:id="@+id/confirmmodel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="352dp"
+        android:layout_marginStart="336dp"
         android:layout_marginTop="548dp"
         android:text="-------"
         android:textColor="@color/black"
@@ -215,7 +215,7 @@
         android:id="@+id/confirmplate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="352dp"
+        android:layout_marginStart="336dp"
         android:layout_marginTop="428dp"
         android:text="-------"
         android:textColor="@color/black"
@@ -259,6 +259,16 @@
         android:textColor="@color/black"
         android:textSize="50dp"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="178dp"
+        android:layout_height="424dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/greentick"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
